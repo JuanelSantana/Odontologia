@@ -401,6 +401,168 @@ a {
 
 
 /* ========================================
+   SECCION SERVICIOS
+======================================== */
+
+.servicios-seccion {
+    background-color: #f5f5f5;
+    padding: 50px;
+}
+
+/* Titulo con fondo amarillo */
+.servicios-titulo-contenedor {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.servicios-titulo-fondo {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.servicios-titulo {
+    background-color: #E5C87A;
+    color: #6B21A8;
+    font-size: 32px;
+    font-weight: 700;
+    padding: 10px 50px;
+}
+
+.flecha-abajo {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 30px solid #6B21A8;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Descripcion */
+.servicios-descripcion {
+    text-align: center;
+    color: #555555;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+/* Contenido principal */
+.servicios-contenido {
+    display: flex;
+    background-color: #6B21A8;
+    border-radius: 30px;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Lado izquierdo */
+.servicios-izquierda {
+    width: 40%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Caja de descripcion */
+.servicio-descripcion-caja {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.servicio-descripcion-caja h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.servicio-descripcion-caja p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.5;
+}
+
+/* Flechas de navegacion */
+.servicios-navegacion {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    left: 20px;
+}
+
+.servicio-nav-flecha {
+    background-color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.servicio-nav-flecha:hover {
+    background-color: #f0f0f0;
+}
+
+/* Lista de servicios */
+.servicios-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.servicio-item {
+    background-color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.servicio-item:hover {
+    background-color: #f0f0f0;
+}
+
+.servicio-mas {
+    color: #6B21A8;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.servicio-nombre {
+    color: #333333;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Lado derecho - imagen */
+.servicios-derecha {
+    width: 60%;
+}
+
+.servicios-derecha img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ========================================
    FOOTER MORADO
 ======================================== */
 
@@ -538,6 +700,41 @@ a {
     }
     
     .carrusel-flecha {
+        display: none;
+    }
+    
+    /* Servicios */
+    .servicios-seccion {
+        padding: 40px 25px;
+    }
+    
+    .servicios-titulo {
+        font-size: 24px;
+        padding: 10px 30px;
+    }
+    
+    .flecha-abajo {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 20px solid #6B21A8;
+        right: -15px;
+    }
+    
+    .servicios-contenido {
+        flex-direction: column;
+    }
+    
+    .servicios-izquierda {
+        width: 100%;
+        padding: 30px 20px;
+    }
+    
+    .servicios-derecha {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .servicios-navegacion {
         display: none;
     }
 }
