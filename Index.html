@@ -33,7 +33,7 @@
             <!-- Iconos -->
             <div class="header-iconos">
                 <img src="https://img.icons8.com/ios/28/000000/search.png" alt="Buscar" class="icono">
-                <img src="https://img.icons8.com/ios/28/6B21A8/user-male-circle.png" alt="Usuario" class="icono">
+                
             </div>
 
         </div>
@@ -187,25 +187,30 @@
 
                 <!-- Lista de servicios (acordeon) -->
                 <div class="servicios-lista">
-                    <div class="servicio-item">
+                    <div class="servicio-item" onclick="toggleServicio(this)">
                         <span class="servicio-mas">+</span>
-                        <span class="servicio-nombre">Servicio</span>
+                        <span class="servicio-nombre">Limpieza dental</span>
+                        <p class="servicio-detalle">Limpieza profunda para mantener tus dientes sanos y brillantes.</p>
                     </div>
-                    <div class="servicio-item">
+                    <div class="servicio-item" onclick="toggleServicio(this)">
                         <span class="servicio-mas">+</span>
-                        <span class="servicio-nombre">Servicio</span>
+                        <span class="servicio-nombre">Blanqueamiento</span>
+                        <p class="servicio-detalle">Tratamiento profesional para una sonrisa mas blanca.</p>
                     </div>
-                    <div class="servicio-item">
+                    <div class="servicio-item" onclick="toggleServicio(this)">
                         <span class="servicio-mas">+</span>
-                        <span class="servicio-nombre">Servicio</span>
+                        <span class="servicio-nombre">Ortodoncia</span>
+                        <p class="servicio-detalle">Brackets y alineadores para corregir la posicion de tus dientes.</p>
                     </div>
-                    <div class="servicio-item">
+                    <div class="servicio-item" onclick="toggleServicio(this)">
                         <span class="servicio-mas">+</span>
-                        <span class="servicio-nombre">Servicio</span>
+                        <span class="servicio-nombre">Implantes</span>
+                        <p class="servicio-detalle">Reemplazo de dientes perdidos con implantes de titanio.</p>
                     </div>
-                    <div class="servicio-item">
+                    <div class="servicio-item" onclick="toggleServicio(this)">
                         <span class="servicio-mas">+</span>
-                        <span class="servicio-nombre">Servicio</span>
+                        <span class="servicio-nombre">Endodoncia</span>
+                        <p class="servicio-detalle">Tratamiento de conducto para salvar dientes danados.</p>
                     </div>
                 </div>
 
@@ -220,6 +225,83 @@
 
     </section>
 
+    <!-- ========== SECCION AGENDA CITA ========== -->
+    <section class="agenda-seccion">
+        
+        <!-- Titulo -->
+        <div class="agenda-header">
+            <h2 class="agenda-titulo">Promoción Grande</h2>
+            <p class="agenda-subtitulo">Lorem ipsum dolor sit amet consectetur elit.</p>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="agenda-contenido">
+            
+            <!-- Formulario -->
+            <div class="agenda-formulario">
+                <div class="campo">
+                    <label>Name</label>
+                    <input type="text" placeholder="Value">
+                </div>
+                <div class="campo">
+                    <label>Surname</label>
+                    <input type="text" placeholder="Value">
+                </div>
+                <div class="campo">
+                    <label>Email</label>
+                    <input type="email" placeholder="Value">
+                </div>
+                <div class="campo">
+                    <label>Message</label>
+                    <textarea placeholder="Value"></textarea>
+                </div>
+                <button class="boton-submit">Submit</button>
+            </div>
+
+            <!-- Calendario -->
+            <div class="agenda-calendario">
+                <div class="calendario-input" onclick="toggleCalendario()">
+                    <label>Date</label>
+                    <div class="fecha-input">
+                        <span id="fecha-mostrada">Seleccionar fecha</span>
+                        <img src="https://img.icons8.com/ios/20/000000/calendar.png" alt="Calendario">
+                    </div>
+                    <small>MM/DD/YYYY</small>
+                </div>
+                <div class="calendario-caja" id="calendario-caja">
+                    <div class="calendario-nav">
+                        <button onclick="cambiarMes(-1)">&lt;</button>
+                        <span id="mes-actual">Aug</span>
+                        <button onclick="cambiarMes(1)">&gt;</button>
+                        <button onclick="cambiarAnio(-1)">&lt;</button>
+                        <span id="anio-actual">2025</span>
+                        <button onclick="cambiarAnio(1)">&gt;</button>
+                    </div>
+                    <div class="calendario-dias-header">
+                        <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                    </div>
+                    <div class="calendario-dias" id="calendario-dias">
+                        <!-- Los dias se generan con JavaScript -->
+                    </div>
+                    <div class="calendario-acciones">
+                        <button class="btn-cancelar" onclick="cerrarCalendario()">Cancel</button>
+                        <button class="btn-ok" onclick="confirmarFecha()">OK</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banner con diente -->
+            <div class="agenda-banner">
+                <img src="https://i.postimg.cc/L5S5rJjM/tooth-3d.png" alt="Diente" class="agenda-diente">
+                <div class="agenda-banner-morado">
+                    <span class="agenda-texto">Agenda aquí</span>
+                    <span class="agenda-texto-borde">Agenda aquí</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- ========== PIE DE PAGINA MORADO ========== -->
     <footer class="footer-morado"></footer>
 
@@ -227,6 +309,120 @@
     <button class="boton-chat">
         <img src="https://img.icons8.com/ios-filled/24/ffffff/chat.png" alt="Chat">
     </button>
+
+    <script>
+    // Variables del calendario
+    let mesActual = new Date().getMonth();
+    let anioActual = new Date().getFullYear();
+    let fechaSeleccionada = null;
+
+    const meses = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    // Mostrar/ocultar calendario
+    function toggleCalendario() {
+        const caja = document.getElementById('calendario-caja');
+        caja.style.display = caja.style.display === 'block' ? 'none' : 'block';
+        if (caja.style.display === 'block') {
+            generarDias();
+        }
+    }
+
+    function cerrarCalendario() {
+        document.getElementById('calendario-caja').style.display = 'none';
+    }
+
+    // Cambiar mes
+    function cambiarMes(direccion) {
+        mesActual += direccion;
+        if (mesActual > 11) {
+            mesActual = 0;
+            anioActual++;
+        } else if (mesActual < 0) {
+            mesActual = 11;
+            anioActual--;
+        }
+        generarDias();
+    }
+
+    // Cambiar año
+    function cambiarAnio(direccion) {
+        anioActual += direccion;
+        generarDias();
+    }
+
+    // Generar los dias del mes
+    function generarDias() {
+        const contenedor = document.getElementById('calendario-dias');
+        document.getElementById('mes-actual').textContent = meses[mesActual];
+        document.getElementById('anio-actual').textContent = anioActual;
+
+        // Primer dia del mes y total de dias
+        const primerDia = new Date(anioActual, mesActual, 1).getDay();
+        const totalDias = new Date(anioActual, mesActual + 1, 0).getDate();
+        const diasMesAnterior = new Date(anioActual, mesActual, 0).getDate();
+
+        let html = '';
+
+        // Dias del mes anterior
+        for (let i = primerDia - 1; i >= 0; i--) {
+            html += `<span class="otro-mes">${diasMesAnterior - i}</span>`;
+        }
+
+        // Dias del mes actual
+        for (let dia = 1; dia <= totalDias; dia++) {
+            const esSeleccionado = fechaSeleccionada && 
+                fechaSeleccionada.dia === dia && 
+                fechaSeleccionada.mes === mesActual && 
+                fechaSeleccionada.anio === anioActual;
+            
+            html += `<span class="${esSeleccionado ? 'seleccionado' : ''}" onclick="seleccionarDia(${dia})">${dia}</span>`;
+        }
+
+        // Dias del mes siguiente
+        const totalCeldas = primerDia + totalDias;
+        const celdasRestantes = 42 - totalCeldas;
+        for (let i = 1; i <= celdasRestantes; i++) {
+            html += `<span class="otro-mes">${i}</span>`;
+        }
+
+        contenedor.innerHTML = html;
+    }
+
+    // Seleccionar un dia
+    function seleccionarDia(dia) {
+        fechaSeleccionada = { dia, mes: mesActual, anio: anioActual };
+        generarDias();
+    }
+
+    // Confirmar fecha
+    function confirmarFecha() {
+        if (fechaSeleccionada) {
+            const mes = String(fechaSeleccionada.mes + 1).padStart(2, '0');
+            const dia = String(fechaSeleccionada.dia).padStart(2, '0');
+            document.getElementById('fecha-mostrada').textContent = `${mes}/${dia}/${fechaSeleccionada.anio}`;
+        }
+        cerrarCalendario();
+    }
+
+    // Iniciar calendario
+    generarDias();
+
+    // ===== ACORDEON DE SERVICIOS =====
+    function toggleServicio(item) {
+        // Cerrar otros abiertos
+        document.querySelectorAll('.servicio-item.abierto').forEach(function(otro) {
+            if (otro !== item) {
+                otro.classList.remove('abierto');
+                otro.querySelector('.servicio-mas').textContent = '+';
+            }
+        });
+        
+        // Abrir/cerrar el clickeado
+        item.classList.toggle('abierto');
+        const mas = item.querySelector('.servicio-mas');
+        mas.textContent = item.classList.contains('abierto') ? '-' : '+';
+    }
+    </script>
 
 </body>
 </html>
