@@ -1,29 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('sesion');
-});
-
-Route::get('/inicio', function () {
-    return view('inicio');
-});
-
-Route::get('/conexion', function () {
-    return view('conexion');
-});
-
-Route::get('/sesion', function () {
-    return view('sesion');
-})->name('login');
-
-Route::post('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
 use App\Http\Controllers\AuthController;
 
-Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar');
+// Rutas accesibles para invitados
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('sesion');
+    })->name('login');
 
+    Route::get('/sesion', function () {
+        return view('sesion');
+    });
+
+    Route::get('/inicio', function () {
+        return view('inicio');
+    })->name('registro');
+});
+
+// Rutas protegidas
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('usuario.logout');
+});
+
+// Rutas de procesamiento
+Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar');
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('usuario.login');

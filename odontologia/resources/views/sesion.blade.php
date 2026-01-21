@@ -11,7 +11,7 @@
 
     <div class="card">
         <h2>Iniciar Sesión</h2>
-        <form action="{{ route('dashboard') }}" method="POST">
+        <form action="{{ route('usuario.login') }}" method="POST">
             @csrf
 
             @if (session('success'))
