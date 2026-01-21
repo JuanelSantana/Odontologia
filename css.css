@@ -1,0 +1,506 @@
+/* ========================================
+   ESTILOS GENERALES
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    background-color: white;
+    padding: 15px 50px;
+}
+
+.header-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icono {
+    width: 45px;
+    height: 45px;
+}
+
+.logo-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-nombre {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333333;
+    letter-spacing: 3px;
+}
+
+.logo-subtitulo {
+    font-size: 10px;
+    color: #666666;
+    letter-spacing: 5px;
+}
+
+/* Navegacion */
+.navegacion {
+    display: flex;
+    gap: 10px;
+    background-color: #f0f0f0;
+    padding: 8px;
+    border-radius: 25px;
+}
+
+.nav-link {
+    padding: 8px 20px;
+    color: #333333;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+.nav-link:hover {
+    background-color: #e0e0e0;
+}
+
+.nav-link.activo {
+    background-color: white;
+}
+
+/* Iconos del header */
+.header-iconos {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icono {
+    cursor: pointer;
+}
+
+
+/* ========================================
+   SECCION HERO
+======================================== */
+
+.hero {
+    padding: 60px 50px;
+    min-height: 500px;
+}
+
+.hero-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+/* Textos */
+.hero-texto {
+    width: 50%;
+}
+
+.subtitulo {
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.titulo {
+    font-size: 52px;
+    font-weight: 800;
+    color: #6B21A8;
+    margin-bottom: 25px;
+}
+
+.descripcion {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+/* Boton */
+.boton-cita {
+    display: inline-block;
+    background-color: #6B21A8;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.boton-cita:hover {
+    background-color: #581C87;
+}
+
+/* Imagen */
+.hero-imagen {
+    width: 45%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.diente {
+    width: 320px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Banner morado */
+.banner-morado {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 160px;
+    background-color: #6B21A8;
+    border-radius: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 1;
+}
+
+.texto-promocion {
+    color: white;
+    font-size: 26px;
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.texto-promocion-borde {
+    color: transparent;
+    font-size: 26px;
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    -webkit-text-stroke: 1px white;
+}
+
+
+/* ========================================
+   SECCION TITULO PROMOCION
+======================================== */
+
+.seccion-titulo {
+    text-align: center;
+    padding: 40px 50px;
+    background-color: white;
+}
+
+.titulo-promocion {
+    font-size: 42px;
+    font-weight: 700;
+    color: #6B21A8;
+}
+
+
+/* ========================================
+   BARRA DE CONTACTO
+======================================== */
+
+.barra-contacto {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 20px 50px;
+}
+
+/* Imagen del diente */
+.contacto-diente {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacto-diente img {
+    width: 140px;
+}
+
+/* Contenedor de la informacion */
+.contacto-info {
+    display: flex;
+    flex: 1;
+}
+
+/* Cada item de contacto */
+.contacto-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 25px 35px;
+    flex: 1;
+}
+
+/* Direccion - fondo morado con bordes redondeados */
+.contacto-item.direccion {
+    background-color: #6B21A8;
+    border-radius: 50px;
+}
+
+.contacto-item.direccion h3,
+.contacto-item.direccion p {
+    color: white;
+}
+
+/* Email - fondo blanco con bordes redondeados */
+.contacto-item.email {
+    background-color: white;
+    border-radius: 50px;
+    margin-left: -30px;
+    padding-left: 50px;
+}
+
+.contacto-item.email h3 {
+    color: #6B21A8;
+}
+
+.contacto-item.email p {
+    color: #333333;
+}
+
+/* Telefonos - fondo gris con bordes redondeados */
+.contacto-item.telefonos {
+    background-color: #f0f0f0;
+    border-radius: 50px;
+    margin-left: -30px;
+    padding-left: 50px;
+}
+
+.contacto-item.telefonos h3 {
+    color: #333333;
+}
+
+.contacto-item.telefonos p {
+    color: #333333;
+}
+
+/* Textos de contacto */
+.contacto-texto h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.contacto-texto p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   SECCION PROMOCION MORADA
+======================================== */
+
+.promocion-morada {
+    background-color: #6B21A8;
+    padding: 50px;
+    text-align: center;
+}
+
+.promocion-titulo {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.promocion-descripcion {
+    font-size: 16px;
+    color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   GALERIA / SLIDER
+======================================== */
+
+.galeria {
+    display: flex;
+    background-color: #6B21A8;
+    padding: 0 20px 20px 20px;
+    gap: 20px;
+}
+
+.galeria-item {
+    flex: 1;
+    height: 250px;
+    background-color: #d0d0d0;
+}
+
+.galeria-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.galeria-centro span {
+    color: #888888;
+    font-size: 18px;
+}
+
+
+/* ========================================
+   FOOTER MORADO
+======================================== */
+
+.footer-morado {
+    background-color: #6B21A8;
+    height: 60px;
+}
+
+
+/* ========================================
+   BOTON DE CHAT
+======================================== */
+
+.boton-chat {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #6B21A8;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-chat:hover {
+    background-color: #581C87;
+}
+
+
+/* ========================================
+   RESPONSIVE - TABLET Y CELULAR
+======================================== */
+
+@media (max-width: 900px) {
+    
+    .header {
+        padding: 15px 25px;
+    }
+    
+    .navegacion {
+        display: none;
+    }
+    
+    .hero {
+        padding: 40px 25px;
+    }
+    
+    .hero-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-texto {
+        width: 100%;
+    }
+    
+    .hero-imagen {
+        width: 100%;
+        min-height: 300px;
+    }
+    
+    .titulo {
+        font-size: 36px;
+    }
+    
+    .diente {
+        width: 250px;
+    }
+    
+    .banner-morado {
+        width: 120px;
+    }
+    
+    .texto-promocion,
+    .texto-promocion-borde {
+        font-size: 20px;
+    }
+    
+    /* Seccion titulo */
+    .seccion-titulo {
+        padding: 30px 25px;
+    }
+    
+    .titulo-promocion {
+        font-size: 32px;
+    }
+    
+    /* Barra contacto */
+    .barra-contacto {
+        flex-direction: column;
+    }
+    
+    .contacto-diente {
+        width: 100%;
+    }
+    
+    .contacto-info {
+        flex-direction: column;
+    }
+    
+    .contacto-item {
+        justify-content: center;
+    }
+    
+    /* Promocion morada */
+    .promocion-morada {
+        padding: 40px 25px;
+    }
+    
+    .promocion-titulo {
+        font-size: 32px;
+    }
+    
+    /* Galeria */
+    .galeria {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .galeria-item {
+        height: 200px;
+    }
+}
