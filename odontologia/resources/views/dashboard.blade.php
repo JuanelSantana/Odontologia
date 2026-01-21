@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-
-<body>
+@extends('layouts.app') @section('contenido')
     <div class="card">
         <h2>Dashboard</h2>
         <p>¡Login exitoso! Bienvenido {{ Auth::user()->name }}</p>
@@ -17,6 +8,4 @@
             <button type="submit" style="background-color: #ff4d4d; color: white;">Cerrar Sesión</button>
         </form>
     </div>
-</body>
-
-</html>
+@endsection
