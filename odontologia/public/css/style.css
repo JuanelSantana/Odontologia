@@ -2,9 +2,12 @@ body {
     font-family: Arial, sans-serif;
     background: #f2f4f8;
     min-height: 100vh;
-    display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: row;
+    transition: var(--transition);
 }
 
 .card {
@@ -48,4 +51,208 @@ body {
 
 .card button:hover {
     background: #4338ca;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #55297c;
+    --secondary-color: #8562a4;
+    --bg-color: #f2f2f2;
+    --text-color: #333;
+    --white: #fff;
+    --white-text: #fff;
+    --black-text: #000;
+    --texto-opaco: #cfcfcf;
+    --border-color: #ccc;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.sidebar {
+    width: 20vw;
+    height: 100vh;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.sidebar .perfil {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white-text);
+}
+
+.sidebar .perfil .foto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+
+.sidebar .perfil .nombre p {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sidebar .perfil .nombre span {
+    font-size: 16px;
+    color: var(--texto-opaco);
+    text-align: center;
+}
+
+.sidebar .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--white-text);
+    padding-left: 20px;
+    overflow: visible;
+    transition: none;
+}
+
+.sidebar .menu .list-item {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    cursor: pointer;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 10px;
+}
+
+.sidebar .menu .list-item a {
+    position: relative;
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: var(--texto-opaco);
+    padding-left: 20px;
+    height: 30px;
+    align-items: center;
+}
+
+.sidebar .menu .list-item a .icon {
+    font-size: 1rem;
+    margin-right: 15px;
+}
+
+.sidebar .menu .list-item:not(.active):hover a {
+    color: var(--bg-color);
+}
+
+.sidebar .menu .list-item.active {
+    background: var(--bg-color);
+}
+
+.sidebar .menu .list-item.active a {
+    color: var(--black-text);
+    font-weight: 600;
+}
+
+.sidebar .menu .list-item.active::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--bg-color);
+    pointer-events: none;
+}
+
+.sidebar .menu .list-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--bg-color);
+    pointer-events: none;
+}
+
+.sidebar .cerrar {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+    margin: 10px auto;
+}
+
+.sidebar .cerrar a {
+    text-decoration: none;
+    color: var(--white-text);
+    font-size: 16px;
+}
+
+.sidebar .cerrar a:hover {
+    color: var(--texto-opaco);
+}
+
+main header {
+    background-color: var(--primary-color);
+    color: var(--white-text);
+    width: 80vw;
+    padding: 20px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    overflow: visible;
+}
+
+main header .search_bar {
+    border: 1px solid var(--white);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 0;
+    transition: var(--transition);
+    transform-origin: right;
+    width: 200px;
+}
+
+main header .search_bar input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--white-text);
+    font-size: 14px;
+}
+
+main header .search_bar input::placeholder {
+    color: var(--texto-opaco);
+    opacity: 0.7;
+}
+
+main header .search_bar button {
+    background-color: transparent;
+    border: none;
+    color: var(--white-text);
+    font-size: 14px;
+    position: absolute;
+    right: 1vw;
 }
