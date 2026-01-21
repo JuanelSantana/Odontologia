@@ -29,9 +29,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
+
         'password',
         'remember_token',
     ];
+
+    protected $dateFormat = 'Y-m-d H:i:s';
 
     /**
      * Get the attributes that should be cast.

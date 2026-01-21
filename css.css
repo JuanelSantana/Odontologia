@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -69,24 +70,27 @@ a {
 .navegacion {
     display: flex;
     gap: 10px;
-    background-color: #f0f0f0;
+    background-color: #5B2A86;
     padding: 8px;
     border-radius: 25px;
 }
 
 .nav-link {
     padding: 8px 20px;
-    color: #333333;
+    color: #f0e8f5;
     font-size: 14px;
     border-radius: 20px;
 }
 
 .nav-link:hover {
-    background-color: #e0e0e0;
+    transition: background-color 0.5s ease-in-out;
+    background-color: #e4e1e1;
+    color:#581C87;
 }
 
 .nav-link.activo {
     background-color: white;
+    color:#581C87;
 }
 
 /* Iconos del header */
@@ -156,7 +160,8 @@ a {
 }
 
 .boton-cita:hover {
-    background-color: #581C87;
+    transition: 0.3s ease-in-out;
+    background-color: #360568;
 }
 
 /* Imagen */
@@ -922,7 +927,7 @@ a {
     left: 30px;
     width: 50px;
     height: 50px;
-    background-color: #6B21A8;
+    background-color: #360568;
     border: none;
     border-radius: 10px;
     cursor: pointer;
