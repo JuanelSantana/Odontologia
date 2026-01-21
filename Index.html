@@ -71,10 +71,12 @@
 
     <!-- ========== SECCION PROMOCION MORADA ========== -->
     <section class="promocion-morada">
-        <h2 class="promocion-titulo">Promocion Grande</h2>
+        <h2 class="promocion-titulo" id="nosotros">Acerca de nosotros...</h2>
         <p class="promocion-descripcion">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque 
-            faucibus ex sapien vitae pellentesque sem
+            En Dr. Cepin Clinic, nos dedicamos a ofrecer servicios odontológicos de alta calidad 
+            en New Jersey. Nuestro compromiso es brindar una experiencia cómoda y segura, utilizando 
+            tecnología de vanguardia para garantizar que cada paciente logre la sonrisa saludable y 
+            radiante que siempre ha deseado.
         </p>
     </section>
 
@@ -112,15 +114,16 @@
         <!-- Titulo con fondo amarillo -->
         <div class="servicios-titulo-contenedor">
             <div class="servicios-titulo-fondo">
-                <h2 class="servicios-titulo">Servicios</h2>
+                <h2 class="servicios-titulo" id="servicios">Servicios</h2>
                 <div class="flecha-abajo"></div>
             </div>
         </div>
 
         <!-- Descripcion -->
         <p class="servicios-descripcion">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem 
-            placerat. In id cursus mi pretium tellus duis convallis.
+            En Dr. Cepin Clinic brindamos servicios integrales que cubren todas las áreas de la salud oral,
+             desde odontología preventiva y limpiezas profundas, hasta procedimientos avanzados de estética
+              dental, implantes y rehabilitación oral.
         </p>
 
         <!-- Contenido principal -->
@@ -132,7 +135,7 @@
                 <!-- Caja de descripcion del servicio -->
                 <div class="servicio-descripcion-caja">
                     <h3>Servicio</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                    <p>Brindamos servicios de alta calidad para mantener tu boca sana y estética, entre ellos:</p>
                 </div>
 
                 <!-- Lista de servicios (acordeon) -->
@@ -253,7 +256,7 @@
     </section>
     <!-- ========== TITULO PROMOCION ========== -->
     <section class="seccion-titulo">
-        <h2 class="titulo-promocion">Contáctanos!</h2>
+        <h2 class="titulo-promocion" id="contacto">Contáctanos!</h2>
     </section>
 
     <!-- ========== BARRA DE CONTACTO ========== -->
@@ -273,7 +276,7 @@
                 <div class="contacto-texto">
                     <h3>Direccion</h3>
                     <p>Av. Color 1560</p>
-                    <p>Cordoba, Cordoba Capital</p>
+                    <p>Newark, New Jersey</p>
                 </div>
             </div>
 
@@ -282,8 +285,8 @@
                 <img src="https://img.icons8.com/ios/40/6B21A8/new-post.png" alt="Email">
                 <div class="contacto-texto">
                     <h3>Email</h3>
-                    <p>info@tudentista.com.ar</p>
-                    <p>info@tudentista.com.ar</p>
+                    <p>drcepincli@gmail.com</p>
+                    <p>drcepincli@hotmail.com</p>
                 </div>
             </div>
 
@@ -292,8 +295,8 @@
                 <img src="https://img.icons8.com/ios/40/6B21A8/phone.png" alt="Telefono">
                 <div class="contacto-texto">
                     <h3>Telefonos</h3>
-                    <p>351 7608XXX</p>
-                    <p>3541 7825XXX</p>
+                    <p>973 7608XXX</p>
+                    <p>973 7825XXX</p>
                 </div>
             </div>
 
@@ -301,7 +304,9 @@
     </section>
 
     <!-- ========== PIE DE PAGINA MORADO ========== -->
-    <footer class="footer-morado"></footer>
+    <footer class="footer-morado">
+        <p>Copyright &copy; 2026 Dr. Cepin Clinic. Todos los derechos reservados.</p>
+    </footer>
 
     <!-- ========== BOTON CHAT ========== -->
     <button class="boton-chat">
@@ -314,7 +319,7 @@
     let anioActual = new Date().getFullYear();
     let fechaSeleccionada = null;
 
-    const meses = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     // Mostrar/ocultar calendario
     function toggleCalendario() {

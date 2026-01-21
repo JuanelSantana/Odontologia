@@ -222,7 +222,7 @@ a {
 .seccion-titulo {
     text-align: center;
     padding: 40px 50px;
-    background-color: white;
+    background-color: #f5f5f5;
 }
 
 .titulo-promocion {
@@ -337,7 +337,7 @@ a {
 }
 
 .promocion-titulo {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 700;
     color: white;
     margin-bottom: 15px;
@@ -592,7 +592,7 @@ a {
 ======================================== */
 
 .agenda-seccion {
-    background-color: #f5f5f5;
+    background-color: white;
     padding: 50px;
 }
 
@@ -914,8 +914,17 @@ a {
 .footer-morado {
     background-color: #6B21A8;
     height: 60px;
+    display: flex;
+    justify-content: center;
+    align-content:center;
 }
 
+.footer-morado p {
+    color:#e0e0e0;
+    align-content:center;
+    text-align: center;
+
+}
 
 /* ========================================
    BOTON DE CHAT
