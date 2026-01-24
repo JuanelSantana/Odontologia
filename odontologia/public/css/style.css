@@ -1,22 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #55297c;
+    --secondary-color: #8562a4;
+    --bg-color: #f2f2f2;
+    --text-color: #333;
+    --white: #fff;
+    --white-text: #fff;
+    --black-text: #000;
+    --texto-opaco: #cfcfcf;
+    --border-color: #ccc;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #f2f4f8;
+    background: var(--bg-color);
     min-height: 100vh;
     justify-content: center;
-    align-items: center;
-    background-color: var(--bg-color);
     display: flex;
     flex-direction: row;
     transition: var(--transition);
 }
 
 .card {
-    background: white;
+    background: var(--white-text);
     padding: 25px;
     width: 300px;
+    height: 60%;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    margin: auto 0px;
 }
 
 .card h2 {
@@ -41,7 +59,7 @@ body {
 .card button {
     width: 100%;
     padding: 10px;
-    background: #4f46e5;
+    background: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -50,26 +68,7 @@ body {
 }
 
 .card button:hover {
-    background: #4338ca;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #55297c;
-    --secondary-color: #8562a4;
-    --bg-color: #f2f2f2;
-    --text-color: #333;
-    --white: #fff;
-    --white-text: #fff;
-    --black-text: #000;
-    --texto-opaco: #cfcfcf;
-    --border-color: #ccc;
-    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--primary-color);
 }
 
 
@@ -201,13 +200,16 @@ body {
     margin: 10px auto;
 }
 
-.sidebar .cerrar a {
+.sidebar .cerrar button {
     text-decoration: none;
     color: var(--white-text);
     font-size: 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-.sidebar .cerrar a:hover {
+.sidebar .cerrar button:hover {
     color: var(--texto-opaco);
 }
 

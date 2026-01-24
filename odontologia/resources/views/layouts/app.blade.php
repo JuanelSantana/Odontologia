@@ -54,7 +54,7 @@
         <div class="cerrar">
             <form action="{{ route('usuario.logout') }}" method="POST">
                 @csrf
-                <a type="submit">Cerrar Sesión</a>
+                <button type="submit">Cerrar Sesión</button>
             </form>
         </div>
     </aside>
