@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css.css">
 </head>
+
 <body>
 
     <!-- ========== HEADER ========== -->
     <header class="header">
         <div class="header-contenido">
-            
+
             <!-- Logo -->
             <div class="logo">
                 <img src="imgs/logo_diente.png" alt="Diente" class="logo-icono">
@@ -33,7 +35,7 @@
             <!-- Iconos -->
             <div class="header-iconos">
                 <img src="https://img.icons8.com/ios/28/000000/search.png" alt="Buscar" class="icono">
-                
+
             </div>
 
         </div>
@@ -42,15 +44,15 @@
     <!-- ========== SECCION HERO ========== -->
     <section class="hero">
         <div class="hero-contenido">
-            
+
             <!-- Textos del lado izquierdo -->
             <div class="hero-texto">
                 <p class="subtitulo">Cuidamos tu sonrisa, protegemos tu salud.</p>
                 <h1 class="titulo">Dr. Cepin Clinic</h1>
                 <p class="descripcion">
-                    Bienvenidos a Dr. Cepin Clinic. Brindamos atención odontológica de primer nivel con un 
-                    toque humano y profesional en New Jersey. Transforma tu sonrisa con la tecnología más 
-                    avanzada y la experiencia que mereces. Cuidamos las sonrisas de toda tu familia, brindando salud 
+                    Bienvenidos a Dr. Cepin Clinic. Brindamos atención odontológica de primer nivel con un
+                    toque humano y profesional en New Jersey. Transforma tu sonrisa con la tecnología más
+                    avanzada y la experiencia que mereces. Cuidamos las sonrisas de toda tu familia, brindando salud
                     dental integral para niños, jóvenes y adultos.
                 </p>
                 <a href="#agenda-cita" class="boton-cita">Agenda tu cita!</a>
@@ -58,7 +60,18 @@
 
             <!-- Imagen del lado derecho -->
             <div class="hero-imagen">
-                <img src="imgs/diente_gigante.png" alt="Diente" class="diente">
+                <script type="module"
+                    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+                <model-viewer src="3d/diente.glb" alt="Diente" class="diente" id="diente" auto-rotate camera-controls
+                    touch-action="pan-y" shadow-intensity="1"></model-viewer>
+                <script>
+                    const diente = document.querySelector('#diente');
+
+                    diente.addEventListener('load', () => {
+                        const material = diente.model.materials[0];
+                        material.pbrMetallicRoughness.setBaseColorFactor([0.70, 0.70, 0.70, 0.8]);
+                    });
+                </script>
                 <div class="banner-morado">
                     <span class="texto-promocion">por tu sonrisa</span>
                     <span class="texto-promocion-borde">Cuidado</span>
@@ -73,45 +86,48 @@
     <section class="promocion-morada">
         <h2 class="promocion-titulo" id="nosotros">Acerca de nosotros...</h2>
         <p class="promocion-descripcion">
-            En Dr. Cepin Clinic, nos dedicamos a ofrecer servicios odontológicos de alta calidad 
-            en New Jersey. Nuestro compromiso es brindar una experiencia cómoda y segura, utilizando 
-            tecnología de vanguardia para garantizar que cada paciente logre la sonrisa saludable y 
+            En Dr. Cepin Clinic, nos dedicamos a ofrecer servicios odontológicos de alta calidad
+            en New Jersey. Nuestro compromiso es brindar una experiencia cómoda y segura, utilizando
+            tecnología de vanguardia para garantizar que cada paciente logre la sonrisa saludable y
             radiante que siempre ha deseado.
         </p>
-    
+
         <br>
-    <!-- ========== CARRUSEL DE IMAGENES ========== -->
-    <section class="carrusel-seccion">
-        
-        <!-- Flecha izquierda -->
-        <button class="carrusel-flecha flecha-izquierda">
-            <img src="https://img.icons8.com/ios-filled/30/ffffff/chevron-left.png" alt="Anterior">
-        </button>
+        <!-- ========== CARRUSEL DE IMAGENES ========== -->
+        <section class="carrusel-seccion">
 
-        <!-- Contenedor de imagenes -->
-        <div class="carrusel-contenedor">
-            <div class="carrusel-imagen">
-                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop" alt="Clinica dental">
-            </div>
-            <div class="carrusel-imagen imagen-central">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=300&fit=crop" alt="Tratamiento dental">
-            </div>
-            <div class="carrusel-imagen">
-                <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&h=300&fit=crop" alt="Sonrisa perfecta">
-            </div>
-        </div>
+            <!-- Flecha izquierda -->
+            <button class="carrusel-flecha flecha-izquierda">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/chevron-left.png" alt="Anterior">
+            </button>
 
-        <!-- Flecha derecha -->
-        <button class="carrusel-flecha flecha-derecha">
-            <img src="https://img.icons8.com/ios-filled/30/ffffff/chevron-right.png" alt="Siguiente">
-        </button>
+            <!-- Contenedor de imagenes -->
+            <div class="carrusel-contenedor">
+                <div class="carrusel-imagen">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop"
+                        alt="Clinica dental">
+                </div>
+                <div class="carrusel-imagen imagen-central">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=300&fit=crop"
+                        alt="Tratamiento dental">
+                </div>
+                <div class="carrusel-imagen">
+                    <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&h=300&fit=crop"
+                        alt="Sonrisa perfecta">
+                </div>
+            </div>
 
-    </section>
+            <!-- Flecha derecha -->
+            <button class="carrusel-flecha flecha-derecha">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/chevron-right.png" alt="Siguiente">
+            </button>
+
+        </section>
     </section>
 
     <!-- ========== SECCION SERVICIOS ========== -->
     <section class="servicios-seccion">
-        
+
         <!-- Titulo con fondo amarillo -->
         <div class="servicios-titulo-contenedor">
             <div class="servicios-titulo-fondo">
@@ -123,16 +139,16 @@
         <!-- Descripcion -->
         <p class="servicios-descripcion">
             En Dr. Cepin Clinic brindamos servicios integrales que cubren todas las áreas de la salud oral,
-             desde odontología preventiva y limpiezas profundas, hasta procedimientos avanzados de estética
-              dental, implantes y rehabilitación oral.
+            desde odontología preventiva y limpiezas profundas, hasta procedimientos avanzados de estética
+            dental, implantes y rehabilitación oral.
         </p>
 
         <!-- Contenido principal -->
         <div class="servicios-contenido">
-            
+
             <!-- Lado izquierdo - Lista de servicios -->
             <div class="servicios-izquierda">
-                
+
                 <!-- Caja de descripcion del servicio -->
                 <div class="servicio-descripcion-caja">
                     <h3>Servicio</h3>
@@ -181,7 +197,7 @@
 
     <!-- ========== SECCION AGENDA CITA ========== -->
     <section class="agenda-seccion" id="agenda-cita">
-        
+
         <!-- Titulo -->
         <div class="agenda-header">
             <h2 class="agenda-titulo">Agenda tu cita, ya!</h2>
@@ -190,7 +206,7 @@
 
         <!-- Contenido principal -->
         <div class="agenda-contenido">
-            
+
             <!-- Formulario -->
             <div class="agenda-formulario">
                 <div class="campo">
@@ -259,45 +275,45 @@
     <section class="seccion-titulo">
         <h2 class="titulo-promocion" id="contacto">Contáctanos!</h2>
 
-    <!-- ========== BARRA DE CONTACTO ========== -->
-    <section class="barra-contacto">
-        
+        <!-- ========== BARRA DE CONTACTO ========== -->
+        <section class="barra-contacto">
 
-        <!-- Informacion de contacto -->
-        <div class="contacto-info">
-            
-            <!-- Direccion -->
-            <div class="contacto-item direccion">
-                <img src="https://img.icons8.com/ios-filled/30/ffffff/marker.png" alt="Ubicacion">
-                <div class="contacto-texto">
-                    <h3>Direccion</h3>
-                    <p>Av. Color 1560</p>
-                    <p>Newark, New Jersey</p>
+
+            <!-- Informacion de contacto -->
+            <div class="contacto-info">
+
+                <!-- Direccion -->
+                <div class="contacto-item direccion">
+                    <img src="https://img.icons8.com/ios-filled/30/ffffff/marker.png" alt="Ubicacion">
+                    <div class="contacto-texto">
+                        <h3>Direccion</h3>
+                        <p>Av. Color 1560</p>
+                        <p>Newark, New Jersey</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Email -->
-            <div class="contacto-item email">
-                <img src="https://img.icons8.com/ios/40/6B21A8/new-post.png" alt="Email">
-                <div class="contacto-texto">
-                    <h3>Email</h3>
-                    <p>drcepincli@gmail.com</p>
-                    <p>drcepincli@hotmail.com</p>
+                <!-- Email -->
+                <div class="contacto-item email">
+                    <img src="https://img.icons8.com/ios/40/6B21A8/new-post.png" alt="Email">
+                    <div class="contacto-texto">
+                        <h3>Email</h3>
+                        <p>drcepincli@gmail.com</p>
+                        <p>drcepincli@hotmail.com</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Telefonos -->
-            <div class="contacto-item telefonos">
-                <img src="https://img.icons8.com/ios/40/6B21A8/phone.png" alt="Telefono">
-                <div class="contacto-texto">
-                    <h3>Telefonos</h3>
-                    <p>973 7608XXX</p>
-                    <p>973 7825XXX</p>
+                <!-- Telefonos -->
+                <div class="contacto-item telefonos">
+                    <img src="https://img.icons8.com/ios/40/6B21A8/phone.png" alt="Telefono">
+                    <div class="contacto-texto">
+                        <h3>Telefonos</h3>
+                        <p>973 7608XXX</p>
+                        <p>973 7825XXX</p>
+                    </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
+            </div>
+        </section>
     </section>
 
     <!-- ========== PIE DE PAGINA MORADO ========== -->
@@ -311,118 +327,119 @@
     </button>
 
     <script>
-    // Variables del calendario
-    let mesActual = new Date().getMonth();
-    let anioActual = new Date().getFullYear();
-    let fechaSeleccionada = null;
+        // Variables del calendario
+        let mesActual = new Date().getMonth();
+        let anioActual = new Date().getFullYear();
+        let fechaSeleccionada = null;
 
-    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    // Mostrar/ocultar calendario
-    function toggleCalendario() {
-        const caja = document.getElementById('calendario-caja');
-        caja.style.display = caja.style.display === 'block' ? 'none' : 'block';
-        if (caja.style.display === 'block') {
+        // Mostrar/ocultar calendario
+        function toggleCalendario() {
+            const caja = document.getElementById('calendario-caja');
+            caja.style.display = caja.style.display === 'block' ? 'none' : 'block';
+            if (caja.style.display === 'block') {
+                generarDias();
+            }
+        }
+
+        function cerrarCalendario() {
+            document.getElementById('calendario-caja').style.display = 'none';
+        }
+
+        // Cambiar mes
+        function cambiarMes(direccion) {
+            mesActual += direccion;
+            if (mesActual > 11) {
+                mesActual = 0;
+                anioActual++;
+            } else if (mesActual < 0) {
+                mesActual = 11;
+                anioActual--;
+            }
             generarDias();
         }
-    }
 
-    function cerrarCalendario() {
-        document.getElementById('calendario-caja').style.display = 'none';
-    }
-
-    // Cambiar mes
-    function cambiarMes(direccion) {
-        mesActual += direccion;
-        if (mesActual > 11) {
-            mesActual = 0;
-            anioActual++;
-        } else if (mesActual < 0) {
-            mesActual = 11;
-            anioActual--;
-        }
-        generarDias();
-    }
-
-    // Cambiar año
-    function cambiarAnio(direccion) {
-        anioActual += direccion;
-        generarDias();
-    }
-
-    // Generar los dias del mes
-    function generarDias() {
-        const contenedor = document.getElementById('calendario-dias');
-        document.getElementById('mes-actual').textContent = meses[mesActual];
-        document.getElementById('anio-actual').textContent = anioActual;
-
-        // Primer dia del mes y total de dias
-        const primerDia = new Date(anioActual, mesActual, 1).getDay();
-        const totalDias = new Date(anioActual, mesActual + 1, 0).getDate();
-        const diasMesAnterior = new Date(anioActual, mesActual, 0).getDate();
-
-        let html = '';
-
-        // Dias del mes anterior
-        for (let i = primerDia - 1; i >= 0; i--) {
-            html += `<span class="otro-mes">${diasMesAnterior - i}</span>`;
+        // Cambiar año
+        function cambiarAnio(direccion) {
+            anioActual += direccion;
+            generarDias();
         }
 
-        // Dias del mes actual
-        for (let dia = 1; dia <= totalDias; dia++) {
-            const esSeleccionado = fechaSeleccionada && 
-                fechaSeleccionada.dia === dia && 
-                fechaSeleccionada.mes === mesActual && 
-                fechaSeleccionada.anio === anioActual;
-            
-            html += `<span class="${esSeleccionado ? 'seleccionado' : ''}" onclick="seleccionarDia(${dia})">${dia}</span>`;
-        }
+        // Generar los dias del mes
+        function generarDias() {
+            const contenedor = document.getElementById('calendario-dias');
+            document.getElementById('mes-actual').textContent = meses[mesActual];
+            document.getElementById('anio-actual').textContent = anioActual;
 
-        // Dias del mes siguiente
-        const totalCeldas = primerDia + totalDias;
-        const celdasRestantes = 42 - totalCeldas;
-        for (let i = 1; i <= celdasRestantes; i++) {
-            html += `<span class="otro-mes">${i}</span>`;
-        }
+            // Primer dia del mes y total de dias
+            const primerDia = new Date(anioActual, mesActual, 1).getDay();
+            const totalDias = new Date(anioActual, mesActual + 1, 0).getDate();
+            const diasMesAnterior = new Date(anioActual, mesActual, 0).getDate();
 
-        contenedor.innerHTML = html;
-    }
+            let html = '';
 
-    // Seleccionar un dia
-    function seleccionarDia(dia) {
-        fechaSeleccionada = { dia, mes: mesActual, anio: anioActual };
-        generarDias();
-    }
-
-    // Confirmar fecha
-    function confirmarFecha() {
-        if (fechaSeleccionada) {
-            const mes = String(fechaSeleccionada.mes + 1).padStart(2, '0');
-            const dia = String(fechaSeleccionada.dia).padStart(2, '0');
-            document.getElementById('fecha-mostrada').textContent = `${mes}/${dia}/${fechaSeleccionada.anio}`;
-        }
-        cerrarCalendario();
-    }
-
-    // Iniciar calendario
-    generarDias();
-
-    // ===== ACORDEON DE SERVICIOS =====
-    function toggleServicio(item) {
-        // Cerrar otros abiertos
-        document.querySelectorAll('.servicio-item.abierto').forEach(function(otro) {
-            if (otro !== item) {
-                otro.classList.remove('abierto');
-                otro.querySelector('.servicio-mas').textContent = '+';
+            // Dias del mes anterior
+            for (let i = primerDia - 1; i >= 0; i--) {
+                html += `<span class="otro-mes">${diasMesAnterior - i}</span>`;
             }
-        });
-        
-        // Abrir/cerrar el clickeado
-        item.classList.toggle('abierto');
-        const mas = item.querySelector('.servicio-mas');
-        mas.textContent = item.classList.contains('abierto') ? '-' : '+';
-    }
+
+            // Dias del mes actual
+            for (let dia = 1; dia <= totalDias; dia++) {
+                const esSeleccionado = fechaSeleccionada &&
+                    fechaSeleccionada.dia === dia &&
+                    fechaSeleccionada.mes === mesActual &&
+                    fechaSeleccionada.anio === anioActual;
+
+                html += `<span class="${esSeleccionado ? 'seleccionado' : ''}" onclick="seleccionarDia(${dia})">${dia}</span>`;
+            }
+
+            // Dias del mes siguiente
+            const totalCeldas = primerDia + totalDias;
+            const celdasRestantes = 42 - totalCeldas;
+            for (let i = 1; i <= celdasRestantes; i++) {
+                html += `<span class="otro-mes">${i}</span>`;
+            }
+
+            contenedor.innerHTML = html;
+        }
+
+        // Seleccionar un dia
+        function seleccionarDia(dia) {
+            fechaSeleccionada = { dia, mes: mesActual, anio: anioActual };
+            generarDias();
+        }
+
+        // Confirmar fecha
+        function confirmarFecha() {
+            if (fechaSeleccionada) {
+                const mes = String(fechaSeleccionada.mes + 1).padStart(2, '0');
+                const dia = String(fechaSeleccionada.dia).padStart(2, '0');
+                document.getElementById('fecha-mostrada').textContent = `${mes}/${dia}/${fechaSeleccionada.anio}`;
+            }
+            cerrarCalendario();
+        }
+
+        // Iniciar calendario
+        generarDias();
+
+        // ===== ACORDEON DE SERVICIOS =====
+        function toggleServicio(item) {
+            // Cerrar otros abiertos
+            document.querySelectorAll('.servicio-item.abierto').forEach(function (otro) {
+                if (otro !== item) {
+                    otro.classList.remove('abierto');
+                    otro.querySelector('.servicio-mas').textContent = '+';
+                }
+            });
+
+            // Abrir/cerrar el clickeado
+            item.classList.toggle('abierto');
+            const mas = item.querySelector('.servicio-mas');
+            mas.textContent = item.classList.contains('abierto') ? '-' : '+';
+        }
     </script>
 
 </body>
+
 </html>

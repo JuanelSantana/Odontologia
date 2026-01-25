@@ -86,12 +86,12 @@ a {
 .nav-link:hover {
     transition: all 0.3s ease-in-out;
     background-color: #e4e1e1;
-    color:#581C87;
+    color: #581C87;
 }
 
 .nav-link.activo {
     background-color: white;
-    color:#581C87;
+    color: #581C87;
 }
 
 /* Iconos del header */
@@ -127,6 +127,12 @@ a {
 /* Textos */
 .hero-texto {
     width: 50%;
+}
+
+.hero-imagen .diente {
+    width: 50%;
+    height: 320px;
+    background-color: transparent;
 }
 
 .subtitulo {
@@ -368,7 +374,7 @@ a {
 /* Contenido principal */
 .servicios-contenido {
     display: flex;
-    background: linear-gradient( 40deg, #360568, #6B21A8);
+    background: linear-gradient(40deg, #360568, #6B21A8);
     border-radius: 30px;
     overflow: hidden;
     max-width: 1000px;
@@ -908,12 +914,12 @@ a {
     height: 60px;
     display: flex;
     justify-content: center;
-    align-content:center;
+    align-content: center;
 }
 
 .footer-morado p {
-    color:#e0e0e0;
-    align-content:center;
+    color: #e0e0e0;
+    align-content: center;
     text-align: center;
 
 }
@@ -947,140 +953,140 @@ a {
 ======================================== */
 
 @media (max-width: 480px) {
-    
+
     .header {
         padding: 15px 25px;
     }
-    
+
     .navegacion {
         display: none;
     }
-    
+
     .hero {
         padding: 40px 25px;
     }
-    
+
     .hero-contenido {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .hero-texto {
         width: 100%;
     }
-    
+
     .hero-imagen {
         width: 100%;
         min-height: 300px;
         display: none;
     }
-    
+
     .titulo {
         font-size: 36px;
     }
-    
+
     .diente {
         display: none;
     }
-    
+
     .banner-morado {
         display: none;
     }
-    
+
     .texto-promocion,
     .texto-promocion-borde {
         font-size: 20px;
     }
-    
+
     /* Seccion titulo */
     .seccion-titulo {
         padding: 30px 25px;
     }
-    
+
     .titulo-promocion {
         font-size: 32px;
     }
-    
+
     /* Barra contacto */
     .barra-contacto {
         flex-direction: column;
     }
-    
+
     .contacto-diente {
         width: 100%;
     }
-    
+
     .contacto-info {
         flex-direction: column;
     }
-    
+
     .contacto-item {
         justify-content: center;
     }
-    
+
     /* Promocion morada */
     .promocion-morada {
         padding: 40px 25px;
     }
-    
+
     .promocion-titulo {
         font-size: 32px;
     }
-    
+
     /* Carrusel */
     .carrusel-seccion {
         padding: 20px 15px 30px 15px;
     }
-    
+
     .carrusel-contenedor {
         flex-direction: column;
     }
-    
+
     .carrusel-imagen {
         width: 250px;
         height: 180px;
     }
-    
+
     .carrusel-imagen.imagen-central {
         width: 250px;
         height: 180px;
     }
-    
+
     .carrusel-flecha {
         display: none;
     }
-    
+
     /* Servicios */
     .servicios-seccion {
         padding: 40px 25px;
     }
-    
+
     .servicios-titulo {
         font-size: 24px;
         padding: 10px 30px;
     }
-    
+
     .flecha-abajo {
         border-left: 15px solid transparent;
         border-right: 15px solid transparent;
         border-top: 20px solid #6B21A8;
         right: -15px;
     }
-    
+
     .servicios-contenido {
         flex-direction: column;
     }
-    
+
     .servicios-izquierda {
         width: 100%;
         padding: 30px 20px;
     }
-    
+
     .servicios-derecha {
         width: 100%;
         height: 300px;
     }
-    
+
     .servicios-navegacion {
         display: none;
     }
@@ -1106,7 +1112,7 @@ a {
 
     .agenda-banner {
         display: none;
-        
+
     }
 
     .agenda-diente {
@@ -1121,11 +1127,9 @@ a {
     .agenda-texto-borde {
         font-size: 18px;
     }
-    
+
     .footer-morado p {
         font-size: 14px;
         margin: 10px;
     }
 }
-
-
