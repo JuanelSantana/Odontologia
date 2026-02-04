@@ -24,14 +24,14 @@
 
         <nav class="menu">
             <ul>
-                <li class="list-item active">
-                    <a href="#">
+                <li class="list-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}">
                         <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-                <li class="list-item">
-                    <a href="#">
+                <li class="list-item {{ request()->routeIs('mantenimientos') ? 'active' : '' }}">
+                    <a href="{{ route('mantenimientos') }}">
                         <span class="icon"><ion-icon name="construct-outline"></ion-icon></span>
                         <span class="title">Mantenimientos</span>
                     </a>
@@ -73,15 +73,6 @@
     </main>
 
     <script>
-        const listItems = document.querySelectorAll('.list-item');
-
-        function activeLink() {
-            listItems.forEach((item) => item.classList.remove('active'));
-            this.classList.add('active');
-        }
-
-        listItems.forEach((item) => item.addEventListener('click', activeLink));
-
         // Función para expandir la barra de búsqueda
         const searchBar = document.querySelector('.search_bar');
         const searchInput = document.querySelector('.search_bar input');
