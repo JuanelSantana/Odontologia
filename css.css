@@ -36,6 +36,19 @@ a {
     margin: 0 auto;
 }
 
+.checkbtn {
+    font-size: 20px;
+    float: left;
+    line-height: 80px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
 /* Logo */
 .logo {
     display: flex;
@@ -68,23 +81,30 @@ a {
 
 /* Navegacion */
 .navegacion {
-    display: flex;
-    gap: 10px;
     background-color: #5B2A86;
     padding: 8px;
     border-radius: 25px;
 }
 
+.nav-lista {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .nav-link {
+    display: block;
     padding: 8px 20px;
     color: #f0e8f5;
     font-size: 14px;
     border-radius: 20px;
+    text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
 
 .nav-link:hover {
-    transition: all 0.3s ease-in-out;
     background-color: #e4e1e1;
     color: #581C87;
 }
@@ -94,16 +114,6 @@ a {
     color: #581C87;
 }
 
-/* Iconos del header */
-.header-iconos {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.icono {
-    cursor: pointer;
-}
 
 
 /* ========================================
@@ -952,14 +962,39 @@ a {
    RESPONSIVE - TABLET Y CELULAR
 ======================================== */
 
-@media (max-width: 480px) {
+@media (max-width: 488px) {
 
     .header {
         padding: 15px 25px;
     }
 
-    .navegacion {
+    .checkbtn {
+        display:block;
+    }
+    
+    .header-iconos {
         display: none;
+    }
+    nav {
+        position:fixed;
+        width: 100%;
+        height: 100vh;
+        background: #bba9c7;
+        color:#360568;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        flex-direction: column;
+
+        .nav-link {
+            font-size: 20px;
+        }
+
+    }
+
+    #check:checked ~nav {
+        left: 0;
     }
 
     .hero {
@@ -1132,4 +1167,8 @@ a {
         font-size: 14px;
         margin: 10px;
     }
+}
+
+@media (max-width: 972px) {
+
 }
