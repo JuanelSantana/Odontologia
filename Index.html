@@ -26,6 +26,7 @@
                 </div>
             </div>
 
+            <input type="checkbox" id="check">
             <!-- Menu de navegacion -->
             <nav class="navegacion">
                 <ul class="nav-lista">
@@ -42,9 +43,10 @@
 
             </div>
             <!-- menu responsive -->
-            <input type="checkbox" id="check">
+            
                 <label for="check" class="checkbtn">
-                    <i class="fa-solid fa-bars"></i>
+                    <i class="fa-solid fa-bars open"></i>
+                    <i class="fa-solid fa-xmark close"></i>
                 </label>
 
         </div>
@@ -447,6 +449,16 @@
             const mas = item.querySelector('.servicio-mas');
             mas.textContent = item.classList.contains('abierto') ? '-' : '+';
         }
+
+        // cerrar menu responsive al dar click
+        const check = document.getElementById("check");
+        const links = document.querySelectorAll(".nav-link");
+
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+            check.checked = false;
+                });
+        });
     </script>
 
 </body>

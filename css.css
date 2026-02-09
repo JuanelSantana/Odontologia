@@ -114,8 +114,6 @@ a {
     color: #581C87;
 }
 
-
-
 /* ========================================
    SECCION HERO
 ======================================== */
@@ -975,25 +973,68 @@ a {
     .header-iconos {
         display: none;
     }
-    nav {
+
+    .navegacion{
+        background-color: transparent;
+        padding: 0;
+    }
+    
+    .nav-lista {
+        background: rgba(123, 64, 163, 0.95);
+        backdrop-filter: blur(8px);
+
         position:fixed;
         width: 100%;
         height: 100vh;
-        background: #bba9c7;
-        color:#360568;
-        top: 80px;
+        top: 100px;
         left: -100%;
         text-align: center;
         transition: all .5s;
         flex-direction: column;
 
-        .nav-link {
-            font-size: 20px;
-        }
-
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 60px;
+        padding-bottom: 80px;
+        align-items: center;
     }
 
-    #check:checked ~nav {
+    .nav-link{
+        letter-spacing: .5px;
+        font-weight: 500;
+    }
+
+    .navegacion .nav-lista li {
+        display: block;
+        color:#360568;
+        margin: 22px 0;
+        line-height: 30px;
+    }
+
+    .navegacion .nav-lista li a {
+        font-size: 22px;
+        padding: 20px 26px;
+        width: 90%;
+    }
+
+    li a:hover, li a.active  {
+        background: none;
+        color:#6B21A8
+    }
+
+    .checkbtn .close {
+        display: none;
+    }
+
+    #check:checked ~ .checkbtn .open {
+    display: none;
+    }
+
+    #check:checked ~ .checkbtn .close {
+    display: inline;
+}
+
+    #check:checked ~ .navegacion .nav-lista {
         left: 0;
     }
 
