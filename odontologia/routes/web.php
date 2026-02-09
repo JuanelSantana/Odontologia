@@ -27,6 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('usuario.logout');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/mantenimientos', function () {
+        return view('mantenimientos');
+    })->name('mantenimientos');
+});
+
 // Rutas de procesamiento
 Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar');
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('usuario.login');

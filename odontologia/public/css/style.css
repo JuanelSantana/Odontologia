@@ -258,3 +258,198 @@ main header .search_bar button {
     position: absolute;
     right: 1vw;
 }
+
+.dashboard-container {
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjetas de estadísticas - Compactas y centradas */
+.dashboard-container .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-container .stat-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    border: 1px solid #edf2f7;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 35vw !important;
+    max-width: 35vw !important;
+    height: 150px !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+}
+
+.dashboard-container .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-container .stat-icon {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dashboard-container .stat-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    stroke-width: 2px;
+}
+
+.dashboard-container .stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-container .stat-number {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2d3748;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.dashboard-container .stat-label {
+    font-size: 11px;
+    color: #718096;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+}
+
+/* Colors with soft gradients or flat design matching Capex */
+.dashboard-container .card-blue .stat-icon {
+    background: #ebf8ff;
+    color: #3182ce;
+}
+
+.dashboard-container .card-green .stat-icon {
+    background: #f0fff4;
+    color: #38a169;
+}
+
+.dashboard-container .card-purple .stat-icon {
+    background: #faf5ff;
+    color: #805ad5;
+}
+
+.dashboard-container .card-orange .stat-icon {
+    background: #fffaf0;
+    color: #dd6b20;
+}
+
+/* Gráfico */
+.dashboard-container .chart-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid #edf2f7;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.dashboard-container .chart-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.dashboard-container .chart-dot {
+    width: 10px;
+    height: 10px;
+    background: #48bb78;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.15);
+}
+
+.dashboard-container .chart-title {
+    color: #2d3748;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.dashboard-container .chart-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    gap: 30px;
+    height: 250px;
+    padding-top: 20px;
+    border-bottom: 2px solid #f7fafc;
+}
+
+.dashboard-container .bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    max-width: 80px;
+}
+
+.dashboard-container .bar {
+    width: 100%;
+    background: #edf2f7;
+    border-radius: 6px 6px 0 0;
+    transition: height 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-container .bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #3182ce, #63b3ed);
+    opacity: 0.85;
+}
+
+.dashboard-container .bar-label {
+    color: #718096;
+    font-size: 13px;
+    font-weight: 500;
+    padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container .stats-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashboard-container .stat-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .dashboard-container .chart-bars {
+        height: 180px;
+        gap: 10px;
+    }
+}

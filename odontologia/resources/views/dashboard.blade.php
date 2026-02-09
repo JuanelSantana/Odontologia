@@ -1,11 +1,64 @@
 @extends('layouts.app') @section('contenido')
-    <div class="card">
-        <h2>Dashboard</h2>
-        <p>¡Login exitoso! Bienvenido {{ Auth::user()->name }}</p>
 
-        <form action="{{ route('usuario.logout') }}" method="POST">
-            @csrf
-            <button type="submit" style="background-color: #ff4d4d; color: white;">Cerrar Sesión</button>
-        </form>
+    <div class="dashboard-container">
+        <!--  Seccion de kpis -->
+        <section class="stats-grid">
+            <div class="stat-card card-blue">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-number"> 12 </h3>
+                    <p class="stat-label">Cursos Activos</p>
+                </div>
+            </div>
+
+            <div class="stat-card card-green">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-number"> 12 </h3>
+                    <p class="stat-label">Participantes</p>
+                </div>
+            </div>
+
+            <div class="stat-card card-purple">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-number"> 12 </h3>
+                    <p class="stat-label">Facilitadores</p>
+                </div>
+            </div>
+
+            <div class="stat-card card-orange">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-number"> 12 </h3>
+                    <p class="stat-label">Propuestas Nuevas</p>
+                </div>
+            </div>
+        </section>
     </div>
 @endsection
