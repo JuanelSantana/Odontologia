@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dental Clinic</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css.css">
 </head>
 
@@ -15,6 +16,7 @@
     <header class="header">
         <div class="header-contenido">
 
+            
             <!-- Logo -->
             <div class="logo">
                 <img src="imgs/logo_diente.png" alt="Diente" class="logo-icono">
@@ -24,12 +26,15 @@
                 </div>
             </div>
 
+            <input type="checkbox" id="check">
             <!-- Menu de navegacion -->
             <nav class="navegacion">
-                <a href="#inicio" class="nav-link activo">Inicio</a>
-                <a href="#nosotros" class="nav-link">Nosotros</a>
-                <a href="#servicios" class="nav-link">Servicios</a>
-                <a href="#contacto" class="nav-link">Contacto</a>
+                <ul class="nav-lista">
+                    <li><a href="#inicio" class="nav-link activo">Inicio</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
             </nav>
 
             <!-- Iconos -->
@@ -37,6 +42,12 @@
                 <img src="https://img.icons8.com/ios/28/000000/search.png" alt="Buscar" class="icono">
 
             </div>
+            <!-- menu responsive -->
+            
+                <label for="check" class="checkbtn">
+                    <i class="fa-solid fa-bars open"></i>
+                    <i class="fa-solid fa-xmark close"></i>
+                </label>
 
         </div>
     </header>
@@ -151,7 +162,7 @@
 
                 <!-- Caja de descripcion del servicio -->
                 <div class="servicio-descripcion-caja">
-                    <h3>Servicio</h3>
+                    <h3>Servicios</h3>
                     <p>Brindamos servicios de alta calidad para mantener tu boca sana y estética, entre ellos:</p>
                 </div>
 
@@ -241,7 +252,7 @@
                 <div class="calendario-caja" id="calendario-caja">
                     <div class="calendario-nav">
                         <button onclick="cambiarMes(-1)">&lt;</button>
-                        <span id="mes-actual">Aug</span>
+                        <span id="mes-actual">Ago</span>
                         <button onclick="cambiarMes(1)">&gt;</button>
                         <button onclick="cambiarAnio(-1)">&lt;</button>
                         <span id="anio-actual">2025</span>
@@ -286,7 +297,7 @@
                 <div class="contacto-item direccion">
                     <img src="https://img.icons8.com/ios-filled/30/ffffff/marker.png" alt="Ubicacion">
                     <div class="contacto-texto">
-                        <h3>Direccion</h3>
+                        <h3>Dirección</h3>
                         <p>Av. Color 1560</p>
                         <p>Newark, New Jersey</p>
                     </div>
@@ -438,6 +449,16 @@
             const mas = item.querySelector('.servicio-mas');
             mas.textContent = item.classList.contains('abierto') ? '-' : '+';
         }
+
+        // cerrar menu responsive al dar click
+        const check = document.getElementById("check");
+        const links = document.querySelectorAll(".nav-link");
+
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+            check.checked = false;
+                });
+        });
     </script>
 
 </body>

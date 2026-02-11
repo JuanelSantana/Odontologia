@@ -36,6 +36,19 @@ a {
     margin: 0 auto;
 }
 
+.checkbtn {
+    font-size: 20px;
+    float: left;
+    line-height: 80px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
 /* Logo */
 .logo {
     display: flex;
@@ -68,23 +81,30 @@ a {
 
 /* Navegacion */
 .navegacion {
-    display: flex;
-    gap: 10px;
     background-color: #5B2A86;
     padding: 8px;
     border-radius: 25px;
 }
 
+.nav-lista {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .nav-link {
+    display: block;
     padding: 8px 20px;
     color: #f0e8f5;
     font-size: 14px;
     border-radius: 20px;
+    text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
 
 .nav-link:hover {
-    transition: all 0.3s ease-in-out;
     background-color: #e4e1e1;
     color: #581C87;
 }
@@ -93,18 +113,6 @@ a {
     background-color: white;
     color: #581C87;
 }
-
-/* Iconos del header */
-.header-iconos {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.icono {
-    cursor: pointer;
-}
-
 
 /* ========================================
    SECCION HERO
@@ -295,30 +303,29 @@ a {
 .carrusel-contenedor {
     display: flex;
     gap: 20px;
+    justify-content: center;
     align-items: center;
 }
 
 /* Cada imagen del carrusel */
 .carrusel-imagen {
-    width: 280px;
-    height: 220px;
+    width: 50%;
+    height: 45%;
     overflow: hidden;
     background-color: #d0d0d0;
 }
 
 .carrusel-imagen img {
     width: 100%;
-    height: 100%;
+    height: 180%;
     object-fit: cover;
 }
 
 /* Imagen central mas grande */
 .carrusel-imagen.imagen-central {
-    width: 320px;
-    height: 260px;
+    width: 60%;
+    height: 55%;
 }
-
-
 /* ========================================
    SECCION SERVICIOS
 ======================================== */
@@ -952,14 +959,82 @@ a {
    RESPONSIVE - TABLET Y CELULAR
 ======================================== */
 
-@media (max-width: 480px) {
+@media (max-width: 488px) {
 
     .header {
         padding: 15px 25px;
     }
 
-    .navegacion {
+    .checkbtn {
+        display:block;
+    }
+    
+    .header-iconos {
         display: none;
+    }
+
+    .navegacion{
+        background-color: transparent;
+        padding: 0;
+    }
+    
+    .nav-lista {
+        background: rgba(123, 64, 163, 0.95);
+        backdrop-filter: blur(8px);
+
+        position:fixed;
+        width: 100%;
+        height: 100vh;
+        top: 100px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        flex-direction: column;
+
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 60px;
+        padding-bottom: 80px;
+        align-items: center;
+    }
+
+    .nav-link{
+        letter-spacing: .5px;
+        font-weight: 500;
+    }
+
+    .navegacion .nav-lista li {
+        display: block;
+        color:#360568;
+        margin: 22px 0;
+        line-height: 30px;
+    }
+
+    .navegacion .nav-lista li a {
+        font-size: 22px;
+        padding: 20px 26px;
+        width: 90%;
+    }
+
+    li a:hover, li a.active  {
+        background: none;
+        color:#6B21A8
+    }
+
+    .checkbtn .close {
+        display: none;
+    }
+
+    #check:checked ~ .checkbtn .open {
+    display: none;
+    }
+
+    #check:checked ~ .checkbtn .close {
+    display: inline;
+}
+
+    #check:checked ~ .navegacion .nav-lista {
+        left: 0;
     }
 
     .hero {
@@ -1132,4 +1207,8 @@ a {
         font-size: 14px;
         margin: 10px;
     }
+}
+
+@media (max-width: 972px) {
+    
 }
