@@ -16,7 +16,7 @@
     <header class="header">
         <div class="header-contenido">
 
-            
+
             <!-- Logo -->
             <div class="logo">
                 <img src="imgs/logo_diente.png" alt="Diente" class="logo-icono">
@@ -43,11 +43,11 @@
 
             </div>
             <!-- menu responsive -->
-            
-                <label for="check" class="checkbtn">
-                    <i class="fa-solid fa-bars open"></i>
-                    <i class="fa-solid fa-xmark close"></i>
-                </label>
+
+            <label for="check" class="checkbtn">
+                <i class="fa-solid fa-bars open"></i>
+                <i class="fa-solid fa-xmark close"></i>
+            </label>
 
         </div>
     </header>
@@ -333,9 +333,24 @@
     </footer>
 
     <!-- ========== BOTON CHAT ========== -->
-    <button class="boton-chat">
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <span>Asistente Virtual</span>
+            <button id="close-chat">✖</button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Escribe tu mensaje...">
+            <button id="send-btn">➤</button>
+        </div>
+    </div>
+
+    <button class="boton-chat" id="toggle-chat">
         <img src="https://img.icons8.com/ios-filled/24/ffffff/chat.png" alt="Chat">
     </button>
+    <script src="script.js"></script>
 
     <script>
         // Variables del calendario
@@ -456,8 +471,8 @@
 
         links.forEach(link => {
             link.addEventListener("click", () => {
-            check.checked = false;
-                });
+                check.checked = false;
+            });
         });
     </script>
 

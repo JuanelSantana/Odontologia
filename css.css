@@ -326,6 +326,7 @@ a {
     width: 60%;
     height: 55%;
 }
+
 /* ========================================
    SECCION SERVICIOS
 ======================================== */
@@ -948,9 +949,149 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s;
+    z-index: 1000;
 }
 
 .boton-chat:hover {
+    background-color: #581C87;
+    transform: scale(1.1);
+}
+
+.boton-chat img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Chat Window Styles */
+.chat-window {
+    position: fixed;
+    bottom: 100px;
+    left: 30px;
+    right: auto;
+    width: 350px;
+    height: 500px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-header {
+    background-color: #360568;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    /* Ensure long text breaks */
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #360568;
+    /* Brand color */
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    color: #333;
+    border-bottom-left-radius: 2px;
+}
+
+.message.loading {
+    font-style: italic;
+    color: #777;
+    background-color: transparent;
+    padding: 5px 0;
+}
+
+.chat-footer {
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    display: flex;
+    gap: 10px;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+.chat-footer input:focus {
+    border-color: #360568;
+}
+
+.chat-footer button {
+    background-color: #360568;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.chat-footer button:hover {
     background-color: #581C87;
 }
 
@@ -966,23 +1107,23 @@ a {
     }
 
     .checkbtn {
-        display:block;
+        display: block;
     }
-    
+
     .header-iconos {
         display: none;
     }
 
-    .navegacion{
+    .navegacion {
         background-color: transparent;
         padding: 0;
     }
-    
+
     .nav-lista {
         background: rgba(123, 64, 163, 0.95);
         backdrop-filter: blur(8px);
 
-        position:fixed;
+        position: fixed;
         width: 100%;
         height: 100vh;
         top: 100px;
@@ -998,14 +1139,14 @@ a {
         align-items: center;
     }
 
-    .nav-link{
+    .nav-link {
         letter-spacing: .5px;
         font-weight: 500;
     }
 
     .navegacion .nav-lista li {
         display: block;
-        color:#360568;
+        color: #360568;
         margin: 22px 0;
         line-height: 30px;
     }
@@ -1016,24 +1157,25 @@ a {
         width: 90%;
     }
 
-    li a:hover, li a.active  {
+    li a:hover,
+    li a.active {
         background: none;
-        color:#6B21A8
+        color: #6B21A8
     }
 
     .checkbtn .close {
         display: none;
     }
 
-    #check:checked ~ .checkbtn .open {
-    display: none;
+    #check:checked~.checkbtn .open {
+        display: none;
     }
 
-    #check:checked ~ .checkbtn .close {
-    display: inline;
-}
+    #check:checked~.checkbtn .close {
+        display: inline;
+    }
 
-    #check:checked ~ .navegacion .nav-lista {
+    #check:checked~.navegacion .nav-lista {
         left: 0;
     }
 
@@ -1209,6 +1351,4 @@ a {
     }
 }
 
-@media (max-width: 972px) {
-    
-}
+@media (max-width: 972px) {}
