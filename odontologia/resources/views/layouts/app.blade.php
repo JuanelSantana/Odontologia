@@ -30,7 +30,8 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-                <li class="list-item {{ request()->routeIs('mantenimientos') ? 'active' : '' }}">
+                <li
+                    class="list-item {{ request()->routeIs('mantenimientos') || request()->routeIs('mantenimientos.*') ? 'active' : '' }}">
                     <a href="{{ route('mantenimientos') }}">
                         <span class="icon"><ion-icon name="construct-outline"></ion-icon></span>
                         <span class="title">Mantenimientos</span>
@@ -68,7 +69,7 @@
         </header>
 
         <div class="content">
-                    @yield('contenido')
+            @yield('contenido')
         </div>
     </main>
 

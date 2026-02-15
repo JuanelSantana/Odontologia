@@ -10,6 +10,19 @@ class Paciente extends Model
     protected $primaryKey = 'id_pac'; // Llave primaria personalizada
     public $timestamps = false; // Tu SQL no tiene created_at/updated_at
 
+    protected $fillable = [
+        'nom_pac',
+        'ape_pac',
+        'ced_pac',
+        'gen_pac',
+        'fec_nac_pac',
+        'tel_pac',
+        'eml_pac',
+        'tip_pac',
+        'cnd_sal_pac',
+        'id_seg',
+    ];
+
     // Relación: Un paciente pertenece a un seguro
     public function seguro()
     {

@@ -9,6 +9,10 @@ class Especialidad extends Model
     protected $table = 'Especialidades'; // Nombre exacto en SQL
     protected $primaryKey = 'id_esp'; // Llave primaria personalizada
     public $timestamps = false;
+    protected $fillable = [
+        'nom_esp',
+        'dsc_esp',
+    ];
 }
 
 ?>
