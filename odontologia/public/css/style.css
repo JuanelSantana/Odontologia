@@ -18,57 +18,144 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: var(--bg-color);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg-body);
     min-height: 100vh;
-    justify-content: center;
     display: flex;
-    flex-direction: row;
-    transition: var(--transition);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
+/* — Card — */
 .card {
     background: var(--white-text);
-    padding: 25px;
-    width: 300px;
-    height: 60%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin: auto 0px;
+    padding: 36px 32px 32px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* — Titulo — */
 .card h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
+/* — Form layout — */
+.card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.card form > div {
+    margin-bottom: 16px;
+}
+
+/* — Ocultar <br> — */
+.card br {
+    display: none;
+}
+
+/* — Inputs — */
 .card input {
-    width: 70%;
-    padding: 10px;
-    margin-bottom: 12px;
-    margin-right: 12px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border-color);
     outline: none;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: var(--white-text);
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.card input::placeholder {
+    color: var(--text-muted);
 }
 
 .card input:focus {
-    border-color: #4f46e5;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
+/* — Errores individuales — */
+.card small {
+    color: var(--error-color) !important;
+    font-size: 0.78rem;
+    display: block;
+    margin-top: 4px;
+    padding-left: 2px;
+}
+
+/* — Mensaje de exito — */
+.card div[style*="color: green"] {
+    background: #f0fdf4 !important;
+    color: var(--success-color) !important;
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+    border: 1px solid #bbf7d0 !important;
+    font-size: 0.85rem;
+    margin-bottom: 16px !important;
+}
+
+/* — Errores generales (lista) — */
+.card div[style*="color: red"] {
+    background: #fef2f2 !important;
+    color: var(--error-color) !important;
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+    border: 1px solid #fecaca !important;
+    font-size: 0.85rem;
+    margin-bottom: 16px !important;
+}
+
+.card div[style*="color: red"] ul {
+    margin: 0;
+    padding-left: 16px;
+}
+
+/* — Boton — */
 .card button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: var(--primary-color);
-    color: white;
+    color: var(--white-text);
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: background 0.2s ease;
+    margin-top: 8px;
 }
 
 .card button:hover {
-    background: var(--primary-color);
+    background: var(--primary-hover);
+}
+
+/* — Link — */
+.card p {
+    text-align: center;
+    margin-top: 18px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.card p a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card p a:hover {
+    text-decoration: underline;
 }
 
 
