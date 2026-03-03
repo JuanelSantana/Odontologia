@@ -44,7 +44,7 @@ class PacienteController extends Controller
         $request->validate([
             'nom_pac' => 'required|string|max:100',
             'ape_pac' => 'required|string|max:100',
-            'ced_pac' => 'required|string|max:20|unique:Pacientes,ced_pac,' . $id . ',id_pac',
+            'ced_pac' => 'required|string|max:20|unique:Pacientes,ced_pac,' . $id . ',ced_pac',
             'gen_pac' => 'required|string|max:10',
             'fec_nac_pac' => 'required|date',
             'tel_pac' => 'required|string|max:20',

@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Paciente extends Model
 {
     protected $table = 'Pacientes'; // Nombre exacto en SQL
-    protected $primaryKey = 'id_pac'; // Llave primaria personalizada
+    protected $primaryKey = 'ced_pac'; // Llave primaria
+    public $incrementing = false;
+    protected $keyType = 'string';
     public $timestamps = false; // Tu SQL no tiene created_at/updated_at
 
     protected $fillable = [
@@ -32,22 +34,22 @@ class Paciente extends Model
     // Relación: Un paciente tiene muchas citas
     public function citas()
     {
-        return $this->hasMany(Cita::class, 'id_pac');
+        return $this->hasMany(Cita::class, 'ced_pac', 'ced_pac');
     }
 
     public function historialClinico()
     {
-        return $this->hasOne(HistorialClinico::class, 'id_pac');
+        return $this->hasOne(HistorialClinico::class, 'ced_pac', 'ced_pac');
     }
 
     public function tratamientos()
     {
-        return $this->hasMany(Tratamiento::class, 'id_pac');
+        return $this->hasMany(Tratamiento::class, 'ced_pac', 'ced_pac');
     }
 
     public function pagos()
     {
-        return $this->hasMany(Pago::class, 'id_pac');
+        return $this->hasMany(Pago::class, 'ced_pac', 'ced_pac');
     }
 }
 

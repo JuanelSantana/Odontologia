@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\SeguroController;
+use App\Http\Controllers\TratamientoController;
 
 
 // Rutas accesibles para invitados
@@ -59,6 +65,66 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/mantenimientos/pacientes/{id}', [PacienteController::class, 'destroy'])
         ->name('mantenimientos.pacientes.destroy');
+
+    // Rutas de Doctores
+    Route::get('/mantenimientos/doctores', [DoctorController::class, 'index'])
+        ->name('mantenimientos.doctores.index');
+    Route::post('/mantenimientos/doctores', [DoctorController::class, 'store'])
+        ->name('mantenimientos.doctores.store');
+    Route::put('/mantenimientos/doctores/{id}', [DoctorController::class, 'update'])
+        ->name('mantenimientos.doctores.update');
+    Route::delete('/mantenimientos/doctores/{id}', [DoctorController::class, 'destroy'])
+        ->name('mantenimientos.doctores.destroy');
+
+    // Rutas de Empleados
+    Route::get('/mantenimientos/empleados', [EmpleadoController::class, 'index'])
+        ->name('mantenimientos.empleados.index');
+    Route::post('/mantenimientos/empleados', [EmpleadoController::class, 'store'])
+        ->name('mantenimientos.empleados.store');
+    Route::put('/mantenimientos/empleados/{id}', [EmpleadoController::class, 'update'])
+        ->name('mantenimientos.empleados.update');
+    Route::delete('/mantenimientos/empleados/{id}', [EmpleadoController::class, 'destroy'])
+        ->name('mantenimientos.empleados.destroy');
+
+    // Rutas de Materiales
+    Route::get('/mantenimientos/materiales', [MaterialController::class, 'index'])
+        ->name('mantenimientos.materiales.index');
+    Route::post('/mantenimientos/materiales', [MaterialController::class, 'store'])
+        ->name('mantenimientos.materiales.store');
+    Route::put('/mantenimientos/materiales/{id}', [MaterialController::class, 'update'])
+        ->name('mantenimientos.materiales.update');
+    Route::delete('/mantenimientos/materiales/{id}', [MaterialController::class, 'destroy'])
+        ->name('mantenimientos.materiales.destroy');
+
+    // Rutas de Proveedores
+    Route::get('/mantenimientos/proveedores', [ProveedorController::class, 'index'])
+        ->name('mantenimientos.proveedores.index');
+    Route::post('/mantenimientos/proveedores', [ProveedorController::class, 'store'])
+        ->name('mantenimientos.proveedores.store');
+    Route::put('/mantenimientos/proveedores/{id}', [ProveedorController::class, 'update'])
+        ->name('mantenimientos.proveedores.update');
+    Route::delete('/mantenimientos/proveedores/{id}', [ProveedorController::class, 'destroy'])
+        ->name('mantenimientos.proveedores.destroy');
+
+    // Rutas de Seguros
+    Route::get('/mantenimientos/seguros', [SeguroController::class, 'index'])
+        ->name('mantenimientos.seguros.index');
+    Route::post('/mantenimientos/seguros', [SeguroController::class, 'store'])
+        ->name('mantenimientos.seguros.store');
+    Route::put('/mantenimientos/seguros/{id}', [SeguroController::class, 'update'])
+        ->name('mantenimientos.seguros.update');
+    Route::delete('/mantenimientos/seguros/{id}', [SeguroController::class, 'destroy'])
+        ->name('mantenimientos.seguros.destroy');
+
+    // Rutas de Tratamientos
+    Route::get('/mantenimientos/tratamientos', [TratamientoController::class, 'index'])
+        ->name('mantenimientos.tratamientos.index');
+    Route::post('/mantenimientos/tratamientos', [TratamientoController::class, 'store'])
+        ->name('mantenimientos.tratamientos.store');
+    Route::put('/mantenimientos/tratamientos/{id}', [TratamientoController::class, 'update'])
+        ->name('mantenimientos.tratamientos.update');
+    Route::delete('/mantenimientos/tratamientos/{id}', [TratamientoController::class, 'destroy'])
+        ->name('mantenimientos.tratamientos.destroy');
 });
 
 // Rutas de procesamiento

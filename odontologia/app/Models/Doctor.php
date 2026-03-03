@@ -10,6 +10,16 @@ class Doctor extends Model
     protected $primaryKey = 'id_doc';
     public $timestamps = false;
 
+    protected $fillable = [
+        'nom_doc',
+        'ape_doc',
+        'ced_doc',
+        'tel_doc',
+        'eml_doc',
+        'id_esp'
+    ];
+
+
     public function especialidad()
     {
         return $this->belongsTo(Especialidad::class, 'id_esp');

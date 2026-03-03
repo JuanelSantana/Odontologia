@@ -10,6 +10,12 @@ class Proveedor extends Model
     protected $primaryKey = 'id_prv';
     public $timestamps = false;
 
+    protected $fillable = [
+        'nom_prv',
+        'loc_prv',
+        'tel_prv'
+    ];
+
     public function materiales()
     {
         return $this->hasMany(Material::class, 'id_prv');

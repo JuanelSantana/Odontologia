@@ -12,7 +12,7 @@ class Pago extends Model
 
     public function paciente()
     {
-        return $this->belongsTo(Paciente::class, 'id_pac');
+        return $this->belongsTo(Paciente::class, 'ced_pac', 'ced_pac');
     }
 
     public function cita()

@@ -9,6 +9,9 @@ class Seguro extends Model
     protected $table = 'Seguros'; // Nombre exacto en SQL
     protected $primaryKey = 'id_seg'; // Llave primaria personalizada
     public $timestamps = false; // Tu SQL no tiene created_at/updated_at
-}
 
-?>
+    protected $fillable = [
+        'nom_seg',
+        'tel_seg'
+    ];
+}

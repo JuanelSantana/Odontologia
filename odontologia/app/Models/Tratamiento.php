@@ -10,9 +10,23 @@ class Tratamiento extends Model
     protected $primaryKey = 'id_tra';
     public $timestamps = false;
 
+    protected $fillable = [
+        'ced_pac',
+        'id_doc',
+        'id_ttr',
+        'id_srv',
+        'dsc_tra',
+        'cst_tra',
+        'fec_ini_tra',
+        'fec_fin_tra',
+        'nom_tra',
+        'dur_tra',
+        'id_cit'
+    ];
+
     public function paciente()
     {
-        return $this->belongsTo(Paciente::class, 'id_pac');
+        return $this->belongsTo(Paciente::class, 'ced_pac', 'ced_pac');
     }
 
     public function doctor()
