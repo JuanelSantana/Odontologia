@@ -28,7 +28,7 @@ Route::middleware('guest')->group(function () {
 });
 
 // Rutas protegidas
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'sysuser'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('usuario.logout');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'sysuser'])->group(function () {
     Route::get('/mantenimientos', function () {
         return view('mantenimientos.mantenimientos');
     })->name('mantenimientos');

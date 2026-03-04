@@ -22,9 +22,14 @@ body {
     background: var(--bg-body);
     min-height: 100vh;
     display: flex;
-    align-items: center;
+}
+
+.container-ls {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
     justify-content: center;
-    padding: 20px;
+    align-items: center;
 }
 
 /* — Card — */
