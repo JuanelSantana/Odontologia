@@ -9,7 +9,7 @@
     --secondary-color: #8562a4;
     --bg-color: #f2f2f2;
     --text-color: #333;
-    --white: #fff;
+    --white: #858080;
     --white-text: #fff;
     --black-text: #000;
     --texto-opaco: #cfcfcf;
@@ -22,14 +22,9 @@ body {
     background: var(--bg-body);
     min-height: 100vh;
     display: flex;
-}
-
-.container-ls {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 /* — Card — */
@@ -111,7 +106,7 @@ body {
 
 /* — Errores generales (lista) — */
 .card div[style*="color: red"] {
-    background: #fef2f2 !important;
+    background: #d277d6 !important;
     color: var(--error-color) !important;
     padding: 10px 12px !important;
     border-radius: 8px !important;
