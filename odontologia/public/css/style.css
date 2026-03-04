@@ -9,7 +9,7 @@
     --secondary-color: #8562a4;
     --bg-color: #f2f2f2;
     --text-color: #333;
-    --white: #fff;
+    --white: #858080;
     --white-text: #fff;
     --black-text: #000;
     --texto-opaco: #cfcfcf;
@@ -18,14 +18,13 @@
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--bg-body);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
+            font-family: Arial, sans-serif;
+            background: #f2f4f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
 /* — Card — */
 .card {
@@ -106,7 +105,7 @@ body {
 
 /* — Errores generales (lista) — */
 .card div[style*="color: red"] {
-    background: #fef2f2 !important;
+    background: #d277d6 !important;
     color: var(--error-color) !important;
     padding: 10px 12px !important;
     border-radius: 8px !important;
