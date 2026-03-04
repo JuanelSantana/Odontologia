@@ -10,6 +10,15 @@ class Material extends Model
     protected $primaryKey = 'id_mat';
     public $timestamps = false;
 
+    protected $fillable = [
+        'nom_mat',
+        'dsc_mat',
+        'cnt_mat',
+        'cst_mat',
+        'tip_mat',
+        'id_prv'
+    ];
+
     public function proveedor()
     {
         return $this->belongsTo(Proveedor::class, 'id_prv');

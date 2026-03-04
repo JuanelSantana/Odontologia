@@ -4,11 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistorialClinico extends Model
+class Cotizacion extends Model
 {
-    protected $table = 'Historial_Clinico';
-    protected $primaryKey = 'id_hcl';
+    protected $table = 'Cotizaciones';
+    protected $primaryKey = 'id_coti';
     public $timestamps = false;
+
+    protected $fillable = [
+        'ced_pac',
+        'fecha_coti',
+        'monto',
+        'detalle'
+    ];
 
     public function paciente()
     {

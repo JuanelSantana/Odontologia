@@ -51,7 +51,7 @@ body {
     flex-direction: column;
 }
 
-.card form > div {
+.card form>div {
     margin-bottom: 16px;
 }
 
