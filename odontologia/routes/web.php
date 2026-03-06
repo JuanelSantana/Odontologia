@@ -23,7 +23,7 @@ Route::middleware('guest')->group(function () {
     })->name('iniciop');
 
     Route::get('/registrop', function () {
-        return view('RegistroSPaciente');
+        return view('RegistroPaciente');
     })->name('registrop');
 
     Route::get('/sesion', function () {
