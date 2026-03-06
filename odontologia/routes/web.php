@@ -15,16 +15,26 @@ use App\Http\Controllers\TratamientoController;
 // Rutas accesibles para invitados
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
-        return view('sesion');
-    })->name('login');
+        return view('index');
+    })->name('index');
+
+    Route::get('/iniciop', function () {
+        return view('InicioSPaciente');
+    })->name('iniciop');
+
+    Route::get('/registrop', function () {
+        return view('RegistroSPaciente');
+    })->name('registrop');
 
     Route::get('/sesion', function () {
         return view('sesion');
-    });
+    })->name('login');
 
     Route::get('/inicio', function () {
         return view('inicio');
     })->name('registro');
+
+
 });
 
 // Rutas protegidas
@@ -35,6 +45,8 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('usuario.logout');
 });
+
+
 
 Route::middleware(['auth', 'sysuser'])->group(function () {
     Route::get('/mantenimientos', function () {

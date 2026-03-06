@@ -7,8 +7,8 @@
     <title>Dental Clinic</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css.css">
-    <link rel="icon" href="imgs/logo_diente.png">
+    <link rel="stylesheet" href="{{ asset('css/css.css') }}">
+    <link rel="icon" href="{{ asset('imgs/logo_diente.png') }}">
 </head>
 
 <body>
@@ -74,8 +74,8 @@
             <div class="hero-imagen">
                 <script type="module"
                     src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-                <model-viewer src="3d/diente.glb" alt="Diente" class="diente" id="diente" auto-rotate camera-controls
-                    touch-action="pan-y" shadow-intensity="1"></model-viewer>
+                <model-viewer src="{{ asset('3d/diente.glb') }}" alt="Diente" class="diente" id="diente" auto-rotate
+                    camera-controls touch-action="pan-y" shadow-intensity="1"></model-viewer>
                 <script>
                     const diente = document.querySelector('#diente');
 
@@ -352,267 +352,267 @@
         <img src="https://img.icons8.com/ios-filled/24/ffffff/chat.png" alt="Chat">
     </button>
     <script">
-    // borra el localstorage cuando se hace reload
-// se va a quitar para producción
-window.addEventListener('beforeunload', function (e) {
-    localStorage.clear();
-});
+        // borra el localstorage cuando se hace reload
+        // se va a quitar para producción
+        window.addEventListener('beforeunload', function (e) {
+            localStorage.clear();
+        });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const chatWindow = document.getElementById('chat-window');
-    const toggleButton = document.getElementById('toggle-chat');
-    const closeButton = document.getElementById('close-chat');
-    const chatBody = document.getElementById('chat-body');
-    const chatInput = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-btn');
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatWindow = document.getElementById('chat-window');
+            const toggleButton = document.getElementById('toggle-chat');
+            const closeButton = document.getElementById('close-chat');
+            const chatBody = document.getElementById('chat-body');
+            const chatInput = document.getElementById('chat-input');
+            const sendButton = document.getElementById('send-btn');
 
-    const WEBHOOK_URL = 'https://hook.us2.make.com/wwnuytvyfi4m371nthturigm2e4s7eua';
+            const WEBHOOK_URL = 'https://hook.us2.make.com/wwnuytvyfi4m371nthturigm2e4s7eua';
 
-    // User ID stored in localStorage
-    let iduser = localStorage.getItem('chat_iduser');
+            // User ID stored in localStorage
+            let iduser = localStorage.getItem('chat_iduser');
 
-    async function initNewChat() {
-        try {
-            const response = await fetch(`${WEBHOOK_URL}?Acción=newchat`);
-            if (response.ok) {
-                const newId = await response.text();
-                iduser = newId.replace(/['"]+/g, '').trim();
-                localStorage.setItem('chat_iduser', iduser);
-                console.log('New User ID assigned:', iduser);
-            } else {
-                console.error('Failed to initialize chat:', response.status);
-            }
-        } catch (error) {
-            console.error('Error initializing chat:', error);
-        }
-    }
-
-    // Toggle Chat Window - Initialize chat if no userId exists
-    toggleButton.addEventListener('click', async () => {
-        const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
-
-        if (isHidden) {
-            // If opening chat and no userId, initialize newchat
-            if (!iduser) {
-                await initNewChat();
-            }
-            chatWindow.style.display = 'flex';
-            if (chatInput) chatInput.focus();
-        } else {
-            chatWindow.style.display = 'none';
-        }
-    });
-
-    closeButton.addEventListener('click', () => {
-        chatWindow.style.display = 'none';
-    });
-
-    // Send Message Logic
-    async function sendMessage() {
-        const message = chatInput.value.trim();
-        if (!message) return;
-
-        // Display User Message
-        addMessage(message, 'user');
-        chatInput.value = '';
-
-        // Show Typing Indicator
-        const loadingId = addLoadingIndicator();
-
-        try {
-            // Ensure we have a userId
-            if (!iduser) {
-                await initNewChat(); // Try to get one if missing
-                if (!iduser) throw new Error('No user ID available');
+            async function initNewChat() {
+                try {
+                    const response = await fetch(`${WEBHOOK_URL}?Acción=newchat`);
+                    if (response.ok) {
+                        const newId = await response.text();
+                        iduser = newId.replace(/['"]+/g, '').trim();
+                        localStorage.setItem('chat_iduser', iduser);
+                        console.log('New User ID assigned:', iduser);
+                    } else {
+                        console.error('Failed to initialize chat:', response.status);
+                    }
+                } catch (error) {
+                    console.error('Error initializing chat:', error);
+                }
             }
 
-            // 2. Chat Interaction (Action=prevchat)
-            const params = new URLSearchParams({
-                Acción: 'prevchat',
-                iduser: iduser,
-                Mensaje: message
-            });
+            // Toggle Chat Window - Initialize chat if no userId exists
+            toggleButton.addEventListener('click', async () => {
+                const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
 
-            const response = await fetch(`${WEBHOOK_URL}?${params.toString()}`);
-
-            // Remove typing indicator
-            removeLoadingIndicator(loadingId);
-
-            if (response.ok) {
-                const botResponse = await response.text();
-                addMessage(botResponse, 'bot');
-            } else {
-                addMessage('Lo siento, hubo un error al conectar con el servidor.', 'bot');
-            }
-
-        } catch (error) {
-            removeLoadingIndicator(loadingId);
-            console.error('Error sending message:', error);
-            addMessage('Error de conexión. Por favor intenta de nuevo.', 'bot');
-        }
-    }
-
-    sendButton.addEventListener('click', sendMessage);
-
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
-
-    // Validations & UI Helpers
-    function addMessage(text, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', sender);
-        messageDiv.innerText = text;
-        chatBody.appendChild(messageDiv);
-        scrollToBottom();
-    }
-
-    function addLoadingIndicator() {
-        const id = 'loading-' + Date.now();
-        const loaderDiv = document.createElement('div');
-        loaderDiv.classList.add('message', 'bot', 'loading');
-        loaderDiv.id = id;
-        loaderDiv.innerText = 'Escribiendo...';
-        chatBody.appendChild(loaderDiv);
-        scrollToBottom();
-        return id;
-    }
-
-    function removeLoadingIndicator(id) {
-        const loader = document.getElementById(id);
-        if (loader) loader.remove();
-    }
-
-    function scrollToBottom() {
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }
-});
-
-    </script>
-
-    <script>
-        // Variables del calendario
-        let mesActual = new Date().getMonth();
-        let anioActual = new Date().getFullYear();
-        let fechaSeleccionada = null;
-
-        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-        // Mostrar/ocultar calendario
-        function toggleCalendario() {
-            const caja = document.getElementById('calendario-caja');
-            caja.style.display = caja.style.display === 'block' ? 'none' : 'block';
-            if (caja.style.display === 'block') {
-                generarDias();
-            }
-        }
-
-        function cerrarCalendario() {
-            document.getElementById('calendario-caja').style.display = 'none';
-        }
-
-        // Cambiar mes
-        function cambiarMes(direccion) {
-            mesActual += direccion;
-            if (mesActual > 11) {
-                mesActual = 0;
-                anioActual++;
-            } else if (mesActual < 0) {
-                mesActual = 11;
-                anioActual--;
-            }
-            generarDias();
-        }
-
-        // Cambiar año
-        function cambiarAnio(direccion) {
-            anioActual += direccion;
-            generarDias();
-        }
-
-        // Generar los dias del mes
-        function generarDias() {
-            const contenedor = document.getElementById('calendario-dias');
-            document.getElementById('mes-actual').textContent = meses[mesActual];
-            document.getElementById('anio-actual').textContent = anioActual;
-
-            // Primer dia del mes y total de dias
-            const primerDia = new Date(anioActual, mesActual, 1).getDay();
-            const totalDias = new Date(anioActual, mesActual + 1, 0).getDate();
-            const diasMesAnterior = new Date(anioActual, mesActual, 0).getDate();
-
-            let html = '';
-
-            // Dias del mes anterior
-            for (let i = primerDia - 1; i >= 0; i--) {
-                html += `<span class="otro-mes">${diasMesAnterior - i}</span>`;
-            }
-
-            // Dias del mes actual
-            for (let dia = 1; dia <= totalDias; dia++) {
-                const esSeleccionado = fechaSeleccionada &&
-                    fechaSeleccionada.dia === dia &&
-                    fechaSeleccionada.mes === mesActual &&
-                    fechaSeleccionada.anio === anioActual;
-
-                html += `<span class="${esSeleccionado ? 'seleccionado' : ''}" onclick="seleccionarDia(${dia})">${dia}</span>`;
-            }
-
-            // Dias del mes siguiente
-            const totalCeldas = primerDia + totalDias;
-            const celdasRestantes = 42 - totalCeldas;
-            for (let i = 1; i <= celdasRestantes; i++) {
-                html += `<span class="otro-mes">${i}</span>`;
-            }
-
-            contenedor.innerHTML = html;
-        }
-
-        // Seleccionar un dia
-        function seleccionarDia(dia) {
-            fechaSeleccionada = { dia, mes: mesActual, anio: anioActual };
-            generarDias();
-        }
-
-        // Confirmar fecha
-        function confirmarFecha() {
-            if (fechaSeleccionada) {
-                const mes = String(fechaSeleccionada.mes + 1).padStart(2, '0');
-                const dia = String(fechaSeleccionada.dia).padStart(2, '0');
-                document.getElementById('fecha-mostrada').textContent = `${mes}/${dia}/${fechaSeleccionada.anio}`;
-            }
-            cerrarCalendario();
-        }
-
-        // Iniciar calendario
-        generarDias();
-
-        // ===== ACORDEON DE SERVICIOS =====
-        function toggleServicio(item) {
-            // Cerrar otros abiertos
-            document.querySelectorAll('.servicio-item.abierto').forEach(function (otro) {
-                if (otro !== item) {
-                    otro.classList.remove('abierto');
-                    otro.querySelector('.servicio-mas').textContent = '+';
+                if (isHidden) {
+                    // If opening chat and no userId, initialize newchat
+                    if (!iduser) {
+                        await initNewChat();
+                    }
+                    chatWindow.style.display = 'flex';
+                    if (chatInput) chatInput.focus();
+                } else {
+                    chatWindow.style.display = 'none';
                 }
             });
 
-            // Abrir/cerrar el clickeado
-            item.classList.toggle('abierto');
-            const mas = item.querySelector('.servicio-mas');
-            mas.textContent = item.classList.contains('abierto') ? '-' : '+';
-        }
-
-        // cerrar menu responsive al dar click
-        const check = document.getElementById("check");
-        const links = document.querySelectorAll(".nav-link");
-
-        links.forEach(link => {
-            link.addEventListener("click", () => {
-                check.checked = false;
+            closeButton.addEventListener('click', () => {
+                chatWindow.style.display = 'none';
             });
+
+            // Send Message Logic
+            async function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+
+                // Display User Message
+                addMessage(message, 'user');
+                chatInput.value = '';
+
+                // Show Typing Indicator
+                const loadingId = addLoadingIndicator();
+
+                try {
+                    // Ensure we have a userId
+                    if (!iduser) {
+                        await initNewChat(); // Try to get one if missing
+                        if (!iduser) throw new Error('No user ID available');
+                    }
+
+                    // 2. Chat Interaction (Action=prevchat)
+                    const params = new URLSearchParams({
+                        Acción: 'prevchat',
+                        iduser: iduser,
+                        Mensaje: message
+                    });
+
+                    const response = await fetch(`${WEBHOOK_URL}?${params.toString()}`);
+
+                    // Remove typing indicator
+                    removeLoadingIndicator(loadingId);
+
+                    if (response.ok) {
+                        const botResponse = await response.text();
+                        addMessage(botResponse, 'bot');
+                    } else {
+                        addMessage('Lo siento, hubo un error al conectar con el servidor.', 'bot');
+                    }
+
+                } catch (error) {
+                    removeLoadingIndicator(loadingId);
+                    console.error('Error sending message:', error);
+                    addMessage('Error de conexión. Por favor intenta de nuevo.', 'bot');
+                }
+            }
+
+            sendButton.addEventListener('click', sendMessage);
+
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+
+            // Validations & UI Helpers
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', sender);
+                messageDiv.innerText = text;
+                chatBody.appendChild(messageDiv);
+                scrollToBottom();
+            }
+
+            function addLoadingIndicator() {
+                const id = 'loading-' + Date.now();
+                const loaderDiv = document.createElement('div');
+                loaderDiv.classList.add('message', 'bot', 'loading');
+                loaderDiv.id = id;
+                loaderDiv.innerText = 'Escribiendo...';
+                chatBody.appendChild(loaderDiv);
+                scrollToBottom();
+                return id;
+            }
+
+            function removeLoadingIndicator(id) {
+                const loader = document.getElementById(id);
+                if (loader) loader.remove();
+            }
+
+            function scrollToBottom() {
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
         });
+
     </script>
+
+        <script>
+            // Variables del calendario
+            let mesActual = new Date().getMonth();
+            let anioActual = new Date().getFullYear();
+            let fechaSeleccionada = null;
+
+            const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            // Mostrar/ocultar calendario
+            function toggleCalendario() {
+                const caja = document.getElementById('calendario-caja');
+                caja.style.display = caja.style.display === 'block' ? 'none' : 'block';
+                if (caja.style.display === 'block') {
+                    generarDias();
+                }
+            }
+
+            function cerrarCalendario() {
+                document.getElementById('calendario-caja').style.display = 'none';
+            }
+
+            // Cambiar mes
+            function cambiarMes(direccion) {
+                mesActual += direccion;
+                if (mesActual > 11) {
+                    mesActual = 0;
+                    anioActual++;
+                } else if (mesActual < 0) {
+                    mesActual = 11;
+                    anioActual--;
+                }
+                generarDias();
+            }
+
+            // Cambiar año
+            function cambiarAnio(direccion) {
+                anioActual += direccion;
+                generarDias();
+            }
+
+            // Generar los dias del mes
+            function generarDias() {
+                const contenedor = document.getElementById('calendario-dias');
+                document.getElementById('mes-actual').textContent = meses[mesActual];
+                document.getElementById('anio-actual').textContent = anioActual;
+
+                // Primer dia del mes y total de dias
+                const primerDia = new Date(anioActual, mesActual, 1).getDay();
+                const totalDias = new Date(anioActual, mesActual + 1, 0).getDate();
+                const diasMesAnterior = new Date(anioActual, mesActual, 0).getDate();
+
+                let html = '';
+
+                // Dias del mes anterior
+                for (let i = primerDia - 1; i >= 0; i--) {
+                    html += `<span class="otro-mes">${diasMesAnterior - i}</span>`;
+                }
+
+                // Dias del mes actual
+                for (let dia = 1; dia <= totalDias; dia++) {
+                    const esSeleccionado = fechaSeleccionada &&
+                        fechaSeleccionada.dia === dia &&
+                        fechaSeleccionada.mes === mesActual &&
+                        fechaSeleccionada.anio === anioActual;
+
+                    html += `<span class="${esSeleccionado ? 'seleccionado' : ''}" onclick="seleccionarDia(${dia})">${dia}</span>`;
+                }
+
+                // Dias del mes siguiente
+                const totalCeldas = primerDia + totalDias;
+                const celdasRestantes = 42 - totalCeldas;
+                for (let i = 1; i <= celdasRestantes; i++) {
+                    html += `<span class="otro-mes">${i}</span>`;
+                }
+
+                contenedor.innerHTML = html;
+            }
+
+            // Seleccionar un dia
+            function seleccionarDia(dia) {
+                fechaSeleccionada = { dia, mes: mesActual, anio: anioActual };
+                generarDias();
+            }
+
+            // Confirmar fecha
+            function confirmarFecha() {
+                if (fechaSeleccionada) {
+                    const mes = String(fechaSeleccionada.mes + 1).padStart(2, '0');
+                    const dia = String(fechaSeleccionada.dia).padStart(2, '0');
+                    document.getElementById('fecha-mostrada').textContent = `${mes}/${dia}/${fechaSeleccionada.anio}`;
+                }
+                cerrarCalendario();
+            }
+
+            // Iniciar calendario
+            generarDias();
+
+            // ===== ACORDEON DE SERVICIOS =====
+            function toggleServicio(item) {
+                // Cerrar otros abiertos
+                document.querySelectorAll('.servicio-item.abierto').forEach(function (otro) {
+                    if (otro !== item) {
+                        otro.classList.remove('abierto');
+                        otro.querySelector('.servicio-mas').textContent = '+';
+                    }
+                });
+
+                // Abrir/cerrar el clickeado
+                item.classList.toggle('abierto');
+                const mas = item.querySelector('.servicio-mas');
+                mas.textContent = item.classList.contains('abierto') ? '-' : '+';
+            }
+
+            // cerrar menu responsive al dar click
+            const check = document.getElementById("check");
+            const links = document.querySelectorAll(".nav-link");
+
+            links.forEach(link => {
+                link.addEventListener("click", () => {
+                    check.checked = false;
+                });
+            });
+        </script>
 
 </body>
 
