@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro de Paciente</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{{ asset('css/CSSPACIENTE.css') }}">
 </head>
 <body>
 
@@ -12,8 +12,8 @@
     <!-- Panel lateral -->
     <div class="panel">
       <h2>Ya tienes cuenta?</h2>
-      <p>Si ya tienes una cuenta, inicia sesion para acceder a tus citas y tratamientos</p>
-      <a href="login.html" class="btn-outline">Iniciar Sesion</a>
+      <p>Si ya tienes una cuenta, inicia sesión para acceder a tus citas y tratamientos</p>
+      <a href="iniciop" class="btn-outline">Iniciar Sesion</a>
     </div>
 
     <!-- Formulario Registro -->
@@ -22,7 +22,7 @@
 
       <form>
         <div class="form-group">
-          <label for="cedula">Cedula</label>
+          <label for="cedula">Cédula</label>
           <input type="text" id="cedula" placeholder="Ej: 00100000001">
         </div>
 
@@ -39,7 +39,7 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label for="genero">Genero</label>
+            <label for="genero">Género</label>
             <select id="genero">
               <option value="">Seleccionar</option>
               <option value="M">Masculino</option>
@@ -54,7 +54,7 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label for="telefono">Telefono</label>
+            <label for="telefono">Teléfono</label>
             <input type="text" id="telefono" placeholder="Ej: 8091234567">
           </div>
           <div class="form-group">
@@ -73,7 +73,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="condicion">Condicion de Salud</label>
+            <label for="condicion">Condición de Salud</label>
             <input type="text" id="condicion" placeholder="Ej: Ninguna, Asma...">
           </div>
         </div>

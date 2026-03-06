@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesion</title>
-  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="{{ asset('css/CSSPACIENTE.css') }}">
 </head>
 
 <body>
@@ -14,26 +14,26 @@
     <!-- Panel lateral -->
     <div class="panel">
       <h2>Bienvenido</h2>
-      <p>Para unirte a nuestra comunidad por favor Inicia Sesion con tus datos</p>
-      <a href="registro.html" class="btn-outline">Registrarse</a>
+      <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
+      <a href="registrop" class="btn-outline">Registrarse</a>
     </div>
 
     <!-- Formulario Login -->
     <div class="form-section">
-      <h2>Iniciar Sesion</h2>
+      <h2>Iniciar Sesión</h2>
 
       <form>
         <div class="form-group">
-          <label for="cedula">Cedula</label>
+          <label for="cedula">Cédula</label>
           <input type="text" id="cedula" placeholder="Ej: 00100000001">
         </div>
 
         <div class="form-group">
-          <label for="password">Contrasena</label>
-          <input type="password" id="password" placeholder="Tu contrasena">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="Tu contraseña">
         </div>
 
-        <button type="submit" class="btn-submit">Iniciar Sesion</button>
+        <button type="submit" class="btn-submit">Iniciar Sesión</button>
       </form>
     </div>
   </div>
