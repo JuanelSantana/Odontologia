@@ -40,7 +40,9 @@
 
             <!-- Iconos -->
             <div class="header-iconos">
-                <img src="https://img.icons8.com/ios/28/000000/search.png" alt="Buscar" class="icono">
+                <a href="iniciop" class="icono-login">
+                    <img src="https://img.icons8.com/ios/28/6B21A8/user-male-circle.png" alt="Iniciar sesion" class="icono">
+                </a>
 
             </div>
             <!-- menu responsive -->
