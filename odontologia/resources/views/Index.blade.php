@@ -353,7 +353,7 @@
     <button class="boton-chat" id="toggle-chat">
         <img src="https://img.icons8.com/ios-filled/24/ffffff/chat.png" alt="Chat">
     </button>
-    <script">
+    <script>
         // borra el localstorage cuando se hace reload
         // se va a quitar para producción
         window.addEventListener('beforeunload', function (e) {
@@ -492,129 +492,129 @@
 
     </script>
 
-        <script>
-            // Variables del calendario
-            let mesActual = new Date().getMonth();
-            let anioActual = new Date().getFullYear();
-            let fechaSeleccionada = null;
+    <script>
+        // Variables del calendario
+        let mesActual = new Date().getMonth();
+        let anioActual = new Date().getFullYear();
+        let fechaSeleccionada = null;
 
-            const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-            // Mostrar/ocultar calendario
-            function toggleCalendario() {
-                const caja = document.getElementById('calendario-caja');
-                caja.style.display = caja.style.display === 'block' ? 'none' : 'block';
-                if (caja.style.display === 'block') {
-                    generarDias();
-                }
-            }
-
-            function cerrarCalendario() {
-                document.getElementById('calendario-caja').style.display = 'none';
-            }
-
-            // Cambiar mes
-            function cambiarMes(direccion) {
-                mesActual += direccion;
-                if (mesActual > 11) {
-                    mesActual = 0;
-                    anioActual++;
-                } else if (mesActual < 0) {
-                    mesActual = 11;
-                    anioActual--;
-                }
+        // Mostrar/ocultar calendario
+        function toggleCalendario() {
+            const caja = document.getElementById('calendario-caja');
+            caja.style.display = caja.style.display === 'block' ? 'none' : 'block';
+            if (caja.style.display === 'block') {
                 generarDias();
             }
+        }
 
-            // Cambiar año
-            function cambiarAnio(direccion) {
-                anioActual += direccion;
-                generarDias();
+        function cerrarCalendario() {
+            document.getElementById('calendario-caja').style.display = 'none';
+        }
+
+        // Cambiar mes
+        function cambiarMes(direccion) {
+            mesActual += direccion;
+            if (mesActual > 11) {
+                mesActual = 0;
+                anioActual++;
+            } else if (mesActual < 0) {
+                mesActual = 11;
+                anioActual--;
             }
-
-            // Generar los dias del mes
-            function generarDias() {
-                const contenedor = document.getElementById('calendario-dias');
-                document.getElementById('mes-actual').textContent = meses[mesActual];
-                document.getElementById('anio-actual').textContent = anioActual;
-
-                // Primer dia del mes y total de dias
-                const primerDia = new Date(anioActual, mesActual, 1).getDay();
-                const totalDias = new Date(anioActual, mesActual + 1, 0).getDate();
-                const diasMesAnterior = new Date(anioActual, mesActual, 0).getDate();
-
-                let html = '';
-
-                // Dias del mes anterior
-                for (let i = primerDia - 1; i >= 0; i--) {
-                    html += `<span class="otro-mes">${diasMesAnterior - i}</span>`;
-                }
-
-                // Dias del mes actual
-                for (let dia = 1; dia <= totalDias; dia++) {
-                    const esSeleccionado = fechaSeleccionada &&
-                        fechaSeleccionada.dia === dia &&
-                        fechaSeleccionada.mes === mesActual &&
-                        fechaSeleccionada.anio === anioActual;
-
-                    html += `<span class="${esSeleccionado ? 'seleccionado' : ''}" onclick="seleccionarDia(${dia})">${dia}</span>`;
-                }
-
-                // Dias del mes siguiente
-                const totalCeldas = primerDia + totalDias;
-                const celdasRestantes = 42 - totalCeldas;
-                for (let i = 1; i <= celdasRestantes; i++) {
-                    html += `<span class="otro-mes">${i}</span>`;
-                }
-
-                contenedor.innerHTML = html;
-            }
-
-            // Seleccionar un dia
-            function seleccionarDia(dia) {
-                fechaSeleccionada = { dia, mes: mesActual, anio: anioActual };
-                generarDias();
-            }
-
-            // Confirmar fecha
-            function confirmarFecha() {
-                if (fechaSeleccionada) {
-                    const mes = String(fechaSeleccionada.mes + 1).padStart(2, '0');
-                    const dia = String(fechaSeleccionada.dia).padStart(2, '0');
-                    document.getElementById('fecha-mostrada').textContent = `${mes}/${dia}/${fechaSeleccionada.anio}`;
-                }
-                cerrarCalendario();
-            }
-
-            // Iniciar calendario
             generarDias();
+        }
 
-            // ===== ACORDEON DE SERVICIOS =====
-            function toggleServicio(item) {
-                // Cerrar otros abiertos
-                document.querySelectorAll('.servicio-item.abierto').forEach(function (otro) {
-                    if (otro !== item) {
-                        otro.classList.remove('abierto');
-                        otro.querySelector('.servicio-mas').textContent = '+';
-                    }
-                });
+        // Cambiar año
+        function cambiarAnio(direccion) {
+            anioActual += direccion;
+            generarDias();
+        }
 
-                // Abrir/cerrar el clickeado
-                item.classList.toggle('abierto');
-                const mas = item.querySelector('.servicio-mas');
-                mas.textContent = item.classList.contains('abierto') ? '-' : '+';
+        // Generar los dias del mes
+        function generarDias() {
+            const contenedor = document.getElementById('calendario-dias');
+            document.getElementById('mes-actual').textContent = meses[mesActual];
+            document.getElementById('anio-actual').textContent = anioActual;
+
+            // Primer dia del mes y total de dias
+            const primerDia = new Date(anioActual, mesActual, 1).getDay();
+            const totalDias = new Date(anioActual, mesActual + 1, 0).getDate();
+            const diasMesAnterior = new Date(anioActual, mesActual, 0).getDate();
+
+            let html = '';
+
+            // Dias del mes anterior
+            for (let i = primerDia - 1; i >= 0; i--) {
+                html += `<span class="otro-mes">${diasMesAnterior - i}</span>`;
             }
 
-            // cerrar menu responsive al dar click
-            const check = document.getElementById("check");
-            const links = document.querySelectorAll(".nav-link");
+            // Dias del mes actual
+            for (let dia = 1; dia <= totalDias; dia++) {
+                const esSeleccionado = fechaSeleccionada &&
+                    fechaSeleccionada.dia === dia &&
+                    fechaSeleccionada.mes === mesActual &&
+                    fechaSeleccionada.anio === anioActual;
 
-            links.forEach(link => {
-                link.addEventListener("click", () => {
-                    check.checked = false;
-                });
+                html += `<span class="${esSeleccionado ? 'seleccionado' : ''}" onclick="seleccionarDia(${dia})">${dia}</span>`;
+            }
+
+            // Dias del mes siguiente
+            const totalCeldas = primerDia + totalDias;
+            const celdasRestantes = 42 - totalCeldas;
+            for (let i = 1; i <= celdasRestantes; i++) {
+                html += `<span class="otro-mes">${i}</span>`;
+            }
+
+            contenedor.innerHTML = html;
+        }
+
+        // Seleccionar un dia
+        function seleccionarDia(dia) {
+            fechaSeleccionada = { dia, mes: mesActual, anio: anioActual };
+            generarDias();
+        }
+
+        // Confirmar fecha
+        function confirmarFecha() {
+            if (fechaSeleccionada) {
+                const mes = String(fechaSeleccionada.mes + 1).padStart(2, '0');
+                const dia = String(fechaSeleccionada.dia).padStart(2, '0');
+                document.getElementById('fecha-mostrada').textContent = `${mes}/${dia}/${fechaSeleccionada.anio}`;
+            }
+            cerrarCalendario();
+        }
+
+        // Iniciar calendario
+        generarDias();
+
+        // ===== ACORDEON DE SERVICIOS =====
+        function toggleServicio(item) {
+            // Cerrar otros abiertos
+            document.querySelectorAll('.servicio-item.abierto').forEach(function (otro) {
+                if (otro !== item) {
+                    otro.classList.remove('abierto');
+                    otro.querySelector('.servicio-mas').textContent = '+';
+                }
             });
-        </script>
+
+            // Abrir/cerrar el clickeado
+            item.classList.toggle('abierto');
+            const mas = item.querySelector('.servicio-mas');
+            mas.textContent = item.classList.contains('abierto') ? '-' : '+';
+        }
+
+        // cerrar menu responsive al dar click
+        const check = document.getElementById("check");
+        const links = document.querySelectorAll(".nav-link");
+
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                check.checked = false;
+            });
+        });
+    </script>
 
 </body>
 
