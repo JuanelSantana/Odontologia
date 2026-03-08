@@ -376,6 +376,7 @@ main header .search_bar button {
     padding: 10px;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 80px;
 }
 
 /* Tarjetas de estadísticas - Compactas y centradas */
