@@ -60,11 +60,11 @@
         display: flex; 
         align-items: center; 
         justify-content: flex-start; 
-        padding: 0 20px; 
+        padding: 0 10px; 
         position: fixed; 
         top: 0; 
         right: 0; 
-        left: 270px; 
+        left: 280px; 
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     ">
