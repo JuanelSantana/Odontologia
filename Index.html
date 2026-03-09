@@ -220,57 +220,51 @@
         <div class="agenda-contenido">
 
             <!-- Formulario -->
-            <div class="agenda-formulario">
-                <div class="campo">
-                    <label>Nombre</label>
-                    <input type="text" placeholder="Value">
-                </div>
-                <div class="campo">
-                    <label>Apellido</label>
-                    <input type="text" placeholder="Value">
-                </div>
-                <div class="campo">
-                    <label>Correo electrónico</label>
-                    <input type="email" placeholder="Value">
-                </div>
-                <div class="campo">
-                    <label>Mensaje</label>
-                    <textarea placeholder="Value"></textarea>
-                </div>
-                <button class="boton-submit">Enviar</button>
-            </div>
+            <form action="{{ route('citas.store') }}" method="POST">
+    @csrf
+    <div class="campo">
+        <label>Nombre Completo</label>
+        <input type="text" name="nom_paciente" required placeholder="Nombre del paciente">
+    </div>
+    <div class="campo">
+        <label>Teléfono</label>
+        <input type="text" name="tel_paciente" required placeholder="809-000-0000">
+    </div>
+    <div class="campo">
+        <label>Correo electrónico</label>
+        <input type="email" name="email" required placeholder="correo@ejemplo.com">
+    </div>
 
-            <!-- Calendario -->
-            <div class="agenda-calendario">
-                <div class="calendario-input" onclick="toggleCalendario()">
-                    <label>Fecha</label>
-                    <div class="fecha-input">
-                        <span id="fecha-mostrada">Seleccionar fecha</span>
-                        <img src="https://img.icons8.com/ios/20/000000/calendar.png" alt="Calendario">
-                    </div>
-                    <small>MM/DD/YYYY</small>
-                </div>
-                <div class="calendario-caja" id="calendario-caja">
-                    <div class="calendario-nav">
-                        <button onclick="cambiarMes(-1)">&lt;</button>
-                        <span id="mes-actual">Ago</span>
-                        <button onclick="cambiarMes(1)">&gt;</button>
-                        <button onclick="cambiarAnio(-1)">&lt;</button>
-                        <span id="anio-actual">2025</span>
-                        <button onclick="cambiarAnio(1)">&gt;</button>
-                    </div>
-                    <div class="calendario-dias-header">
-                        <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
-                    </div>
-                    <div class="calendario-dias" id="calendario-dias">
-                        <!-- Los dias se generan con JavaScript -->
-                    </div>
-                    <div class="calendario-acciones">
-                        <button class="btn-cancelar" onclick="cerrarCalendario()">Cancel</button>
-                        <button class="btn-ok" onclick="confirmarFecha()">OK</button>
-                    </div>
-                </div>
-            </div>
+    <div class="campo">
+        <label>Fecha</label>
+        <input type="date" name="fecha" required>
+    </div>
+    <div class="campo">
+        <label>Hora</label>
+        <input type="time" name="hora" required>
+    </div>
+
+    <div class="campo">
+        <label>Doctor/a</label>
+        <select name="id_doctor" required>
+            <option value="">Seleccione un profesional</option>
+            <option value="1">Dr. Cepin (General)</option>
+            <option value="2">Dra. García (Ortodoncia)</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label>Tipo de consulta</label>
+        <select name="motivo" required>
+            <option value="Limpieza">Limpieza Dental</option>
+            <option value="Evaluación">Evaluación General</option>
+            <option value="Ortodoncia">Ortodoncia</option>
+            <option value="Emergencia">Emergencia</option>
+        </select>
+    </div>
+
+    <button type="submit" class="boton-submit">Agendar mi Cita</button>
+</form>
 
             <!-- Banner con diente -->
             <div class="agenda-banner">
