@@ -209,68 +209,48 @@
 
     </section>
 
-    <!-- ========== SECCION AGENDA CITA ========== -->
-    <section class="agenda-seccion" id="agenda-cita">
+    <!-- ========== SECCION TIPS DENTALES ========== -->
+    <section class="tips-seccion" id="tips">
 
         <!-- Titulo -->
-        <div class="agenda-header">
-            <h2 class="agenda-titulo">Agenda tu cita, ya!</h2>
-            <p class="agenda-subtitulo">Tu cita en Dr. Cepin Clinic está a un mensaje de distancia.</p>
+        <div class="tips-header">
+            <h2 class="tips-titulo">Tips para tu Sonrisa</h2>
+            <p class="tips-subtitulo">Consejos de nuestros expertos para mantener una salud dental perfecta</p>
         </div>
 
-        <!-- Contenido principal -->
-        <div class="agenda-contenido">
+        <!-- Cards de tips -->
+        <div class="tips-contenido">
 
-            <!-- Formulario -->
-            <form action="{{ route('citas.store') }}" method="POST">
-    @csrf
-    <div class="campo">
-        <label>Nombre Completo</label>
-        <input type="text" name="nom_paciente" required placeholder="Nombre del paciente">
-    </div>
-    <div class="campo">
-        <label>Teléfono</label>
-        <input type="text" name="tel_paciente" required placeholder="809-000-0000">
-    </div>
-    <div class="campo">
-        <label>Correo electrónico</label>
-        <input type="email" name="email" required placeholder="correo@ejemplo.com">
-    </div>
+            <div class="tip-card">
+                <div class="tip-icono">
+                    <img src="https://img.icons8.com/fluency/60/tooth.png" alt="Cepillado">
+                </div>
+                <h3>Cepillado correcto</h3>
+                <p>Cepilla tus dientes al menos 2 veces al dia durante 2 minutos, usando movimientos circulares suaves.</p>
+            </div>
 
-    <div class="campo">
-        <label>Fecha</label>
-        <input type="date" name="fecha" required>
-    </div>
-    <div class="campo">
-        <label>Hora</label>
-        <input type="time" name="hora" required>
-    </div>
+            <div class="tip-card">
+                <div class="tip-icono">
+                    <img src="https://img.icons8.com/fluency/60/sparkling.png" alt="Hilo dental">
+                </div>
+                <h3>Usa hilo dental</h3>
+                <p>El hilo dental elimina la placa y restos de comida donde el cepillo no llega. Usalo una vez al dia.</p>
+            </div>
 
-    <div class="campo">
-        <label>Doctor/a</label>
-        <select name="id_doctor" required>
-            <option value="">Seleccione un profesional</option>
-            <option value="1">Dr. Cepin (General)</option>
-            <option value="2">Dra. García (Ortodoncia)</option>
-        </select>
-    </div>
+            <div class="tip-card">
+                <div class="tip-icono">
+                    <img src="https://img.icons8.com/fluency/60/no-food.png" alt="Azucar">
+                </div>
+                <h3>Reduce el azucar</h3>
+                <p>El azucar alimenta las bacterias que causan caries. Limita dulces y bebidas azucaradas.</p>
+            </div>
 
-    <div class="campo">
-        <label>Tipo de consulta</label>
-        <select name="motivo" required>
-            <option value="Limpieza">Limpieza Dental</option>
-            <option value="Evaluación">Evaluación General</option>
-            <option value="Ortodoncia">Ortodoncia</option>
-            <option value="Emergencia">Emergencia</option>
-        </select>
-    </div>
-
-    <button type="submit" class="boton-submit">Agendar mi Cita</button>
-</form>
-
-            <!-- Banner con diente -->
-            <div class="agenda-banner">
-                <img src="imgs/diente_gigante.png" alt="Diente" class="agenda-diente">
+            <div class="tip-card">
+                <div class="tip-icono">
+                    <img src="https://img.icons8.com/fluency/60/calendar.png" alt="Visitas">
+                </div>
+                <h3>Visitas regulares</h3>
+                <p>Visita a tu dentista cada 6 meses para limpiezas profesionales y detectar problemas a tiempo.</p>
             </div>
 
         </div>
@@ -609,3 +589,4 @@
 </body>
 
 </html>
+
