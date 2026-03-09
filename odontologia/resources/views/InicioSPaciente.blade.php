@@ -22,19 +22,19 @@
     <div class="form-section">
       <h2>Iniciar Sesión</h2>
 
-      <form>
-        <div class="form-group">
-          <label for="cedula">Cédula</label>
-          <input type="text" id="cedula" placeholder="Ej: 00100000001">
-        </div>
+      <form action="{{ route('paciente.dashboard') }}" method="GET">
+    <div class="form-group">
+      <label for="cedula">Cédula</label>
+      <input type="text" id="cedula" placeholder="Ej: 001-0000000-1">
+    </div>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" id="email" placeholder="Tu email">
-        </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="Tu email">
+    </div>
 
-        <button type="submit" class="btn-submit">Iniciar Sesión</button>
-      </form>
+    <button type="submit" class="btn-submit">Iniciar Sesión</button>
+</form>
     </div>
   </div>
 

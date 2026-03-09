@@ -23,7 +23,7 @@
       <form>
         <div class="form-group">
           <label for="cedula">Cédula</label>
-          <input type="text" id="cedula" placeholder="Ej: 00100000001">
+          <input type="text" id="cedula" placeholder="Ej: 001-0000000-1">
         </div>
 
         <div class="form-row">
@@ -55,7 +55,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="telefono">Teléfono</label>
-            <input type="text" id="telefono" placeholder="Ej: 8091234567">
+            <input type="text" id="telefono" placeholder="Ej: 809-123-4567">
           </div>
           <div class="form-group">
             <label for="email">Email</label>

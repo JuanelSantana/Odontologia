@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EspecialidadController;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EmpleadoController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\SeguroController;
 use App\Http\Controllers\TratamientoController;
-
 
 // Rutas accesibles para invitados
 Route::middleware('guest')->group(function () {
@@ -142,3 +142,11 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
 // Rutas de procesamiento
 Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar');
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('usuario.login');
+
+// Citas
+Route::post('/citas', [CitaController::class, 'store'])->name('citas.store');
+
+// Ruta temporal para ver el dashboard del paciente
+Route::get('/dashboard-paciente', function () {
+    return view('dashboard_paciente');
+})->name('paciente.dashboard');
