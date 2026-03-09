@@ -29,8 +29,8 @@
         </div>
 
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" id="email" placeholder="Tu email">
+          <label for="password">Contraseña</label>
+          <input type="password" id="contrsena" placeholder="Tu contraseña">
         </div>
 
         <button type="submit" class="btn-submit">Iniciar Sesión</button>
