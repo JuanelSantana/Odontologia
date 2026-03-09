@@ -208,6 +208,33 @@ return new class extends Migration {
             $table->foreign('id_usr')->references('id_usr')->on('Usuarios');
         });
 
+
+    Schema::create('Citas', function (Blueprint $table) {
+        $table->id('id_cit');
+        // Información del Paciente
+        $table->string('nom_paciente');
+        $table->string('tel_paciente');
+        $table->string('email');
+        // Información de la Cita
+        $table->date('fecha');
+        $table->time('hora');
+        $table->string('motivo'); // Limpieza, Evaluación, etc.
+        $table->string('estado')->default('Pendiente');
+        
+        // Relaciones
+        $table->unsignedBigInteger('id_doctor');
+        $table->unsignedBigInteger('id_usuario')->nullable(); // Por si el paciente está registrado
+
+        $table->timestamps();
+
+        // REGLA DE ORO: Evita duplicados de Fecha + Hora + Doctor a nivel base de datos
+        $table->unique(['fecha', 'hora', 'id_doctor'], 'cita_unica_dr');
+        
+        // Foreign key (ajusta 'usuarios' y 'doctores' según tus tablas reales)
+        // $table->foreign('id_doctor')->references('id')->on('doctores');
+    });
+
+
         Schema::create('Citas_Servicios', function (Blueprint $table) {
             $table->unsignedInteger('id_cit');
             $table->unsignedInteger('id_srv');

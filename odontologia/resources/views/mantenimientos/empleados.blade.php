@@ -36,7 +36,7 @@
             <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>N°</th>
                         <th>Nombre</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
@@ -47,7 +47,7 @@
                 <tbody>
                     @foreach($empleados as $item)
                         <tr>
-                            <td>{{ $item->id_emp }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nom_emp }} {{ $item->ape_emp }}</td>
                             <td>{{ $item->dir_emp }}</td>
                             <td>{{ $item->tel_emp }}</td>
