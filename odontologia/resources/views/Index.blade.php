@@ -271,10 +271,6 @@
             <!-- Banner con diente -->
             <div class="agenda-banner">
                 <img src="imgs/diente_gigante.png" alt="Diente" class="agenda-diente">
-                <div class="agenda-banner-morado">
-                    <span class="agenda-texto">Agenda aquí</span>
-                    <span class="agenda-texto-borde">Agenda aquí</span>
-                </div>
             </div>
 
         </div>

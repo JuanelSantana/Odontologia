@@ -19,7 +19,7 @@
     <div class="form-section">
   <h2>Crear una Cuenta</h2>
 
-  <form action="{{ route('paciente.dashboard') }}" method="GET">
+  <form action="{{ route('iniciop') }}" method="GET">
     @csrf
     
     <div class="form-row">
