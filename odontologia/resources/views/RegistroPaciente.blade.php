@@ -26,6 +26,13 @@
           <input type="text" id="cedula" placeholder="Ej: 001-0000000-1">
         </div>
 
+        <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" placeholder="Tu contraseña">
+          </div>
+        </div>
+
+
         <div class="form-row">
           <div class="form-group">
             <label for="nombre">Nombre</label>
