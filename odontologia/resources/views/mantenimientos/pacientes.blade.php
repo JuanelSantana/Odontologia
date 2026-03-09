@@ -6,7 +6,7 @@
             <h2>{{ $pacienteEdit ? 'Editar Paciente' : 'Nuevo Paciente' }}</h2>
 
             <form
-                action="{{ $pacienteEdit ? route('mantenimientos.pacientes.update', $pacienteEdit->id_pac) : route('mantenimientos.pacientes.store') }}"
+                action="{{ $pacienteEdit ? route('mantenimientos.pacientes.update', $pacienteEdit->ced_pac) : route('mantenimientos.pacientes.store') }}"
                 method="POST" class="modern-form">
                 @csrf
                 @if($pacienteEdit) @method('PUT') @endif
@@ -59,10 +59,14 @@
             <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
                         <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Género</th>
+                        <th>Fecha Nac.</th>
                         <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>Tipo</th>
+                        <th>Condición de Salud</th>
                         <th>Seguro</th>
                         <th>Acciones</th>
                     </tr>
@@ -70,18 +74,22 @@
                 <tbody>
                     @foreach($pacientes as $item)
                         <tr>
-                            <td>{{ $item->id_pac }}</td>
-                            <td>{{ $item->nom_pac }} {{ $item->ape_pac }}</td>
                             <td>{{ $item->ced_pac }}</td>
+                            <td>{{ $item->nom_pac }} {{ $item->ape_pac }}</td>
+                            <td>{{ $item->gen_pac }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->fec_nac_pac)->format('d/m/Y') }}</td>
                             <td>{{ $item->tel_pac }}</td>
+                            <td>{{ $item->eml_pac }}</td>
+                            <td>{{ $item->tip_pac }}</td>
+                            <td>{{ $item->cnd_sal_pac }}</td>
                             <td>{{ $item->seguro->nom_seg ?? 'N/A' }}</td>
                             <td>
-                                <a href="{{ route('mantenimientos.pacientes.index', ['edit' => $item->id_pac]) }}"
+                                <a href="{{ route('mantenimientos.pacientes.index', ['edit' => $item->ced_pac]) }}"
                                     class="btn-icon select">
                                     <ion-icon name="create-outline"></ion-icon>
                                 </a>
 
-                                <form action="{{ route('mantenimientos.pacientes.destroy', $item->id_pac) }}" method="POST"
+                                <form action="{{ route('mantenimientos.pacientes.destroy', $item->ced_pac) }}" method="POST"
                                     style="display:inline;">
                                     @csrf
                                     @method('DELETE')

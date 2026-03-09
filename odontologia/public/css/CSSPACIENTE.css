@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f0ff;
+}
+
+.container {
+  width: 900px;
+  max-width: 95%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(100, 60, 180, 0.15);
+  display: flex;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+/* ========== PANEL LATERAL ========== */
+.panel {
+  width: 320px;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.panel h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.panel p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.panel .btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+  padding: 10px 35px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.panel .btn-outline:hover {
+  background: #fff;
+  color: #7c3aed;
+}
+
+/* ========== FORMULARIO ========== */
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.form-section h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3b1f6e;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5b4a8a;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d8d0f0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: #faf8ff;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #7c3aed;
+}
+
+.form-group input::placeholder {
+  color: #b0a3d4;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.btn-submit:hover {
+  background: #6325c5;
+}
+
+/* ========== REGISTRO - form más ancho ========== */
+.container.registro {
+  width: 1050px;
+}
+
+.container.registro .form-section {
+  padding: 30px 40px;
+}
+
+.container.registro .form-section h2 {
+  margin-bottom: 18px;
+}
+
+.container.registro .form-group {
+  margin-bottom: 12px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

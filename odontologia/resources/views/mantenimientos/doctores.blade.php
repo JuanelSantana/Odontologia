@@ -46,10 +46,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
                         <th>Cédula</th>
+                        <th>Nombre</th>
                         <th>Teléfono</th>
-                        <th>Email</th>
+                        <th>Correo</th>
                         <th>Especialidad</th>
                         <th>Acciones</th>
                     </tr>
@@ -58,8 +58,8 @@
                     @foreach($doctores as $item)
                         <tr>
                             <td>{{ $item->id_doc }}</td>
-                            <td>{{ $item->nom_doc }} {{ $item->ape_doc }}</td>
                             <td>{{ $item->ced_doc }}</td>
+                            <td>{{ $item->nom_doc }} {{ $item->ape_doc }}</td>
                             <td>{{ $item->tel_doc }}</td>
                             <td>{{ $item->eml_doc }}</td>
                             <td>{{ $item->especialidad->nom_esp ?? 'N/A' }}</td>

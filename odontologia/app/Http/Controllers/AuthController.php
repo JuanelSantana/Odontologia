@@ -23,6 +23,7 @@ class AuthController extends Controller
             'name' => $request->usuario,
             'email' => $request->email,
             'password' => Hash::make($request->clave), // Encriptación
+            'type' => 'sysuser',
         ]);
 
         return redirect()->route('login');
@@ -38,6 +39,14 @@ class AuthController extends Controller
 
 
         if (Auth::attempt(['name' => $request->usuario, 'password' => $request->clave])) {
+            // Verificar si el usuario es de tipo sysuser
+            if (Auth::user()->type !== 'sysuser') {
+                Auth::logout();
+                return back()->withErrors([
+                    'usuario' => 'No tienes permisos para acceder a este sistema.',
+                ])->onlyInput('usuario');
+            }
+
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         }
