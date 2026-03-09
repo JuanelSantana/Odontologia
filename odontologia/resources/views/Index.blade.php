@@ -69,7 +69,7 @@
                     avanzada y la experiencia que mereces. Cuidamos las sonrisas de toda tu familia, brindando salud
                     dental integral para niños, jóvenes y adultos.
                 </p>
-                <a href="#agenda-cita" class="boton-cita">Agenda tu cita!</a>
+                <a href="registrop" class="boton-cita">Agenda tu cita!</a>
             </div>
 
             <!-- Imagen del lado derecho -->
