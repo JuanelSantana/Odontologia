@@ -22,7 +22,7 @@
     <div class="form-section">
       <h2>Iniciar Sesión</h2>
 
-      <form action="{{ route('paciente.dashboard') }}" method="GET">
+      <form action="{{ route('pacientes.dashboard') }}" method="GET">
     <div class="form-group">
       <label for="cedula">Cédula</label>
       <input type="text" id="cedula" placeholder="Ej: 001-0000000-1">

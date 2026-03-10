@@ -149,7 +149,7 @@ Route::post('/citas', [CitaController::class, 'store'])->name('citas.store');
 // Ruta temporal para ver el dashboard del paciente
 Route::get('/dashboard-paciente', function () {
     return view('dashboard_paciente');
-})->name('paciente.dashboard'); // <--- ESTO ES LO QUE FALTA
+})->name('pacientes.dashboard'); // <--- ESTO ES LO QUE FALTA
 
 // Esta línea registra el nombre 'citas.guardar' que usas en el formulario
 Route::post('/guardar-cita', [App\Http\Controllers\CitaController::class, 'store'])->name('citas.guardar');
