@@ -36,10 +36,6 @@ Route::middleware('guest')->group(function () {
 
 });
 
-Route::get('/dashboard-paciente', function () {
-    return view('dashboard_paciente');
-})->name('paciente.dashboard')->middleware(['auth', 'paciente']);
-
 // Rutas de procesamiento para pacientes
 Route::get('/registro-paciente', function () {
     return redirect()->route('registrop');
@@ -66,6 +62,12 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+// Rutas protegidas para Pacientes
+Route::middleware(['auth', 'paciente'])->group(function () {
+    Route::get('/dashboard-paciente', [CitaController::class, 'dashboard'])->name('paciente.dashboard');
+    Route::post('/guardar-cita', [CitaController::class, 'store'])->name('citas.guardar');
 });
 
 
@@ -161,18 +163,5 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
         ->name('mantenimientos.tratamientos.destroy');
 });
 
-// Citas
+// Citas (General or cleanup)
 Route::post('/citas', [CitaController::class, 'store'])->name('citas.store');
-
-// Ruta temporal para ver el dashboard del paciente
-Route::get('/dashboard-paciente', function () {
-    return view('dashboard_paciente');
-})->name('paciente.dashboard'); // <--- ESTO ES LO QUE FALTA
-
-// Esta línea registra el nombre 'citas.guardar' que usas en el formulario
-Route::post('/guardar-cita', [App\Http\Controllers\CitaController::class, 'store'])->name('citas.guardar');
-
-// Esto redirigirá automáticamente al usuario al login si intenta entrar sin sesión
-Route::get('/dashboard-paciente', function () {
-    return view('dashboard_paciente');
-})->middleware('auth');

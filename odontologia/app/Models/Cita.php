@@ -10,6 +10,15 @@ class Cita extends Model
     protected $primaryKey = 'id_cit';
     public $timestamps = false;
 
+    protected $fillable = [
+        'ced_pac',
+        'id_doc',
+        'id_eci',
+        'fec_cit',
+        'mtv_cit',
+        'id_usr',
+    ];
+
     public function paciente()
     {
         return $this->belongsTo(Paciente::class, 'ced_pac', 'ced_pac');
