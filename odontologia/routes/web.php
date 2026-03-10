@@ -34,16 +34,38 @@ Route::middleware('guest')->group(function () {
         return view('inicio');
     })->name('registro');
 
-
 });
 
+Route::get('/dashboard-paciente', function () {
+    return view('dashboard_paciente');
+})->name('paciente.dashboard')->middleware(['auth', 'paciente']);
+
+// Rutas de procesamiento para pacientes
+Route::get('/registro-paciente', function () {
+    return redirect()->route('registrop');
+});
+Route::post('/registro-paciente', [AuthController::class, 'registrarPaciente'])->name('paciente.registrar');
+Route::get('/login-paciente', function () {
+    return redirect()->route('iniciop');
+});
+Route::post('/login-paciente', [AuthController::class, 'loginPaciente'])->name('paciente.login');
+
+// Rutas de procesamiento para usuarios sistema
+Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar');
+Route::post('/login-usuario', [AuthController::class, 'login'])->name('usuario.login');
+
+
+
+
 // Rutas protegidas
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('usuario.logout');
+});
+
 Route::middleware(['auth', 'sysuser'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
-    Route::post('/logout', [AuthController::class, 'logout'])->name('usuario.logout');
 });
 
 
@@ -139,14 +161,7 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
         ->name('mantenimientos.tratamientos.destroy');
 });
 
-// Rutas de procesamiento
-Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar');
-Route::post('/login-usuario', [AuthController::class, 'login'])->name('usuario.login');
-
 // Citas
 Route::post('/citas', [CitaController::class, 'store'])->name('citas.store');
 
 // Ruta temporal para ver el dashboard del paciente
-Route::get('/dashboard-paciente', function () {
-    return view('dashboard_paciente');
-})->name('paciente.dashboard');
