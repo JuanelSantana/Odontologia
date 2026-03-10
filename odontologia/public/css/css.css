@@ -535,126 +535,102 @@ a {
 
 
 /* ========================================
-   SECCION AGENDA CITA
+   SECCION TIPS DENTALES
 ======================================== */
 
-.agenda-seccion {
+.tips-seccion {
     background-color: white;
-    padding: 50px;
+    padding: 60px 50px;
 }
 
-.agenda-header {
+.tips-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
-.agenda-titulo {
+.tips-titulo {
     font-size: 42px;
     font-weight: 700;
     color: #6B21A8;
     margin-bottom: 10px;
 }
 
-.agenda-subtitulo {
+.tips-subtitulo {
     font-size: 16px;
     color: #555555;
 }
 
-.agenda-contenido {
-    display: flex;
-    gap: 40px;
+.tips-contenido {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
     max-width: 1100px;
     margin: 0 auto;
-    align-items: flex-start;
 }
 
-/* Formulario */
-/* Contenedor del Formulario */
-.agenda-contenido form {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide en dos columnas */
-    gap: 20px;
-    background-color: white;
-    padding: 40px;
+.tip-card {
+    background: linear-gradient(145deg, #ffffff, #f8f4fc);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(107, 33, 168, 0.08);
-    border-top: 5px solid #6B21A8;
-}
-
-/* Campos que ocupan todo el ancho (Nombre y Botón) */
-.agenda-contenido .campo:nth-child(1), 
-.agenda-contenido .boton-submit {
-    grid-column: span 2;
-}
-
-/* Etiquetas (Labels) */
-.campo label {
-    font-size: 13px;
-    color: #6B21A8;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-    letter-spacing: 0.5px;
-}
-
-/* Inputs, Selects y Textareas */
-.campo input, 
-.campo select {
-    width: 100%;
-    padding: 12px 18px;
+    padding: 30px 25px;
+    text-align: center;
     border: 2px solid #f0e8f5;
-    border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    color: #444;
-    background-color: #faf8fc;
-    transition: all 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Efecto al hacer clic en un campo */
-.campo input:focus, 
-.campo select:focus {
-    outline: none;
+.tip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(107, 33, 168, 0.15);
     border-color: #6B21A8;
-    background-color: white;
-    box-shadow: 0 0 8px rgba(107, 33, 168, 0.2);
 }
 
-/* Botón de Enviar Estilizado */
-.boton-submit {
+.tip-icono {
+    width: 80px;
+    height: 80px;
     background: linear-gradient(45deg, #360568, #6B21A8);
-    color: white;
-    padding: 16px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+}
+
+.tip-icono img {
+    width: 45px;
+    height: 45px;
+    filter: brightness(0) invert(1);
+}
+
+.tip-card h3 {
+    font-size: 18px;
     font-weight: 700;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 10px;
+    color: #6B21A8;
+    margin-bottom: 12px;
 }
 
-.boton-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(54, 5, 104, 0.3);
-    background: linear-gradient(45deg, #581C87, #8B5CF6);
+.tip-card p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.6;
 }
 
-/* Ajuste para móviles */
+/* Responsive tips */
+@media (max-width: 900px) {
+    .tips-contenido {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 488px) {
-    .agenda-contenido form {
-        grid-template-columns: 1fr; /* Una sola columna en celular */
-        padding: 25px;
+    .tips-seccion {
+        padding: 40px 25px;
     }
-    .agenda-contenido .campo:nth-child(1) {
-        grid-column: span 1;
+    
+    .tips-titulo {
+        font-size: 32px;
     }
-    .boton-submit {
-        grid-column: span 1;
+    
+    .tips-contenido {
+        grid-template-columns: 1fr;
     }
 }
 /* ========================================

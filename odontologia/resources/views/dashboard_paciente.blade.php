@@ -23,6 +23,12 @@
 
         <nav class="menu">
             <ul>
+                <li class="list-item" id="btn-agendar" onclick="mostrarSeccion('seccion-agendar', this)">
+                    <a href="javascript:void(0)">
+                        <span class="icon"><ion-icon name="add-circle-outline"></ion-icon></span>
+                        <span class="title">Agendar Cita</span>
+                    </a>
+                </li>
                 <li class="list-item active">
                     <a href="#">
                         <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
