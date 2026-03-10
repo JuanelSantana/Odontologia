@@ -73,7 +73,7 @@ class CitaController extends Controller
                 'ced_pac' => Auth::user()->name,
                 'id_doc' => $request->id_doc,
                 'id_eci' => 1, // Pendiente
-                'fec_cit' => $request->fec_cit,
+                'fec_cit' => date('Y-m-d H:i:s', $timestamp),
                 'mtv_cit' => $request->mtv_cit,
                 'id_usr' => Auth::id(),
             ]);
