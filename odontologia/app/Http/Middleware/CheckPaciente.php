@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckSysUser
+class CheckPaciente
 {
     /**
      * Handle an incoming request.
@@ -19,17 +19,17 @@ class CheckSysUser
         if (Auth::check()) {
             $type = strtolower(Auth::user()->type);
 
-            if ($type !== 'sysuser') {
-                // Si es un paciente en una ruta de admin, mandarlo a su dashboard
-                if ($type === 'paciente') {
-                    return redirect()->route('paciente.dashboard')->withErrors([
+            if ($type !== 'paciente') {
+                // Si es un sysuser en una ruta de paciente, mandarlo a su dashboard
+                if ($type === 'sysuser') {
+                    return redirect()->route('dashboard')->withErrors([
                         'acceso' => 'No tienes permisos para acceder a esta sección.',
                     ]);
                 }
 
                 Auth::logout();
-                return redirect()->route('login')->withErrors([
-                    'usuario' => 'No tienes permisos para acceder a esta sección.',
+                return redirect()->route('iniciop')->withErrors([
+                    'cedula' => 'No tienes permisos para acceder a esta sección.',
                 ]);
             }
         }
