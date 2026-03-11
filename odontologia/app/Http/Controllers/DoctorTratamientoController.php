@@ -20,12 +20,11 @@ class DoctorTratamientoController extends Controller
         $tratamientos = Tratamiento::with(['paciente', 'tipo', 'servicio', 'cita'])
             ->where('id_doc', $doctorActual->id_doc)
             ->get();
-            
+
         $pacientes = Paciente::all();
         $tipos = TipoTratamiento::all();
         $servicios = Servicio::all();
-        
-        // Show appointments only for this doctor
+
         $citas = Cita::where('id_doc', $doctorActual->id_doc)->get();
 
         $tratamientoEdit = null;
@@ -35,7 +34,12 @@ class DoctorTratamientoController extends Controller
         }
 
         return view('doctor.tratamientos', compact(
-            'tratamientos', 'pacientes', 'tipos', 'servicios', 'citas', 'tratamientoEdit'
+            'tratamientos',
+            'pacientes',
+            'tipos',
+            'servicios',
+            'citas',
+            'tratamientoEdit'
         ));
     }
 
@@ -95,7 +99,7 @@ class DoctorTratamientoController extends Controller
 
         $tratamiento = Tratamiento::where('id_doc', $doctorActual->id_doc)->findOrFail($id);
         $tratamiento->delete();
-        
+
         return redirect()->route('doctor.tratamientos.index')->with('success', 'Tratamiento eliminado correctamente.');
     }
 }
