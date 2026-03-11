@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+}
+
+.container-ls {
+  width: 800px;
+  max-width: 95%;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 25px 80px rgba(124, 58, 237, 0.2);
+  display: flex;
+  overflow: hidden;
+  min-height: 450px;
+  position: relative;
+}
+
+/* ========== FORMULARIO (card) - LADO IZQUIERDO ========== */
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 60px;
+  background: #fff;
+}
+
+.card h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #5b21b6;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.card form {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 25px;
+}
+
+/* Ocultar los br que vienen del HTML */
+.card form br {
+  display: none;
+}
+
+/* Contenedor de cada input */
+.card form > div {
+  margin-bottom: 18px;
+}
+
+/* ========== INPUTS ========== */
+.card input[type="text"],
+.card input[type="password"] {
+  width: 100%;
+  padding: 15px 20px 15px 50px;
+  border: 2px solid #c4b5fd;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #4c1d95;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 18px center;
+  background-size: 20px 20px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.card input[type="text"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238b5cf6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'/%3E%3C/svg%3E");
+}
+
+.card input[type="password"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238b5cf6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'/%3E%3C/svg%3E");
+}
+
+.card input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+}
+
+.card input::placeholder {
+  color: #a78bfa;
+}
+
+/* ========== BOTON ========== */
+.card button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.35);
+}
+
+.card button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(139, 92, 246, 0.45);
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+}
+
+/* ========== PANEL DERECHO CON GRADIENTE ========== */
+.container-ls::after {
+  content: '';
+  flex: 0 0 320px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #c4b5fd 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-ls::before {
+  content: 'Bienvenido!';
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  width: 320px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  z-index: 2;
+  padding: 40px;
+  letter-spacing: 0.5px;
+}
+
+/* ========== ALERTAS ========== */
+.card div[style*="color: green"] {
+  background: #d1fae5;
+  color: #065f46 !important;
+  border: 1px solid #10b981;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin-bottom: 20px !important;
+  width: 100%;
+  max-width: 300px;
+}
+
+.card div[style*="color: red"] {
+  background: #fef2f2;
+  color: #991b1b !important;
+  border: 1px solid #fca5a5;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin-bottom: 20px !important;
+  width: 100%;
+  max-width: 300px;
+}
+
+.card div[style*="color: red"] ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card small[style*="color: red"] {
+  color: #dc2626 !important;
+  font-size: 12px;
+  display: block;
+  margin-top: 6px;
+  padding-left: 20px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .container-ls {
+    flex-direction: column-reverse;
+    width: 90%;
+    max-width: 380px;
+    min-height: auto;
+  }
+
+  .container-ls::after {
+    flex: 0 0 140px;
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .container-ls::before {
+    width: 100%;
+    height: 140px;
+    font-size: 22px;
+    position: relative;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .card {
+    padding: 35px 30px;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .card h2 {
+    font-size: 26px;
+  }
+}

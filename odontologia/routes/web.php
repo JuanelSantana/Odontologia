@@ -30,15 +30,11 @@ Route::middleware('guest')->group(function () {
         return view('sesion');
     })->name('login');
 
-    Route::get('/inicio', function () {
+    /* Route::get('/inicio', function () {
         return view('inicio');
-    })->name('registro');
+    })->name('registro'); */
 
 });
-
-Route::get('/dashboard-paciente', function () {
-    return view('dashboard_paciente');
-})->name('paciente.dashboard')->middleware(['auth', 'paciente']);
 
 // Rutas de procesamiento para pacientes
 Route::get('/registro-paciente', function () {
@@ -51,7 +47,7 @@ Route::get('/login-paciente', function () {
 Route::post('/login-paciente', [AuthController::class, 'loginPaciente'])->name('paciente.login');
 
 // Rutas de procesamiento para usuarios sistema
-Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar');
+/* Route::post('/registro-usuario', [AuthController::class, 'registrar'])->name('usuario.registrar'); */
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('usuario.login');
 
 
@@ -63,9 +59,27 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'sysuser'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+});
+
+// Rutas de Doctor
+Route::middleware(['auth', 'doctor'])->group(function () {
+    Route::get('/doctor/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('doctor.dashboard');
+    
+    // Solo lectura para Citas
+    Route::get('/doctor/citas', [\App\Http\Controllers\DoctorCitaController::class, 'index'])->name('doctor.citas.index');
+    
+    // CRUD para Consultas
+    Route::resource('/doctor/consultas', \App\Http\Controllers\DoctorConsultaController::class)->names('doctor.consultas');
+    
+    // CRUD para Tratamientos adaptado para Doctores
+    Route::resource('/doctor/tratamientos', \App\Http\Controllers\DoctorTratamientoController::class)->names('doctor.tratamientos');
+});
+
+// Rutas protegidas para Pacientes
+Route::middleware(['auth', 'paciente'])->group(function () {
+    Route::get('/dashboard-paciente', [CitaController::class, 'dashboard'])->name('paciente.dashboard');
+    Route::post('/guardar-cita', [CitaController::class, 'store'])->name('citas.guardar');
 });
 
 
@@ -159,20 +173,15 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
         ->name('mantenimientos.tratamientos.update');
     Route::delete('/mantenimientos/tratamientos/{id}', [TratamientoController::class, 'destroy'])
         ->name('mantenimientos.tratamientos.destroy');
+
+    // Rutas de Usuarios
+    Route::get('/mantenimientos/usuarios', [\App\Http\Controllers\UserController::class, 'index'])
+        ->name('mantenimientos.usuarios.index');
+    Route::post('/mantenimientos/usuarios', [\App\Http\Controllers\UserController::class, 'store'])
+        ->name('mantenimientos.usuarios.store');
+    Route::put('/mantenimientos/usuarios/{id}', [\App\Http\Controllers\UserController::class, 'update'])
+        ->name('mantenimientos.usuarios.update');
+    Route::delete('/mantenimientos/usuarios/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])
+        ->name('mantenimientos.usuarios.destroy');
 });
 
-// Citas
-Route::post('/citas', [CitaController::class, 'store'])->name('citas.store');
-
-// Ruta temporal para ver el dashboard del paciente
-Route::get('/dashboard-paciente', function () {
-    return view('dashboard_paciente');
-})->name('pacientes.dashboard'); // <--- ESTO ES LO QUE FALTA
-
-// Esta línea registra el nombre 'citas.guardar' que usas en el formulario
-Route::post('/guardar-cita', [App\Http\Controllers\CitaController::class, 'store'])->name('citas.guardar');
-
-// Esto redirigirá automáticamente al usuario al login si intenta entrar sin sesión
-Route::get('/dashboard-paciente', function () {
-    return view('dashboard_paciente');
-})->middleware('auth');

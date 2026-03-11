@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/CSSsesion.css') }}">
 </head>
 
 <body>
@@ -45,8 +45,8 @@
                     @enderror
                 </div>
                 <br>
+                <br>
                 <button type="submit">Iniciar</button>
-                <p>No tienes una cuenta? <a href="/inicio">Registrate</a></p>
             </form>
         </div>
     </div>

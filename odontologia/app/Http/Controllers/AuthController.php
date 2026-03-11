@@ -11,25 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-    public function registrar(Request $request)
+    /* public function registrar(Request $request)
     {
-        // Validar los datos
-        $request->validate([
-            'usuario' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'clave' => 'required|min:6',
-        ]);
-
-        // Crear el usuario 
-        User::create([
-            'name' => $request->usuario,
-            'email' => $request->email,
-            'password' => Hash::make($request->clave), // Encriptación
-            'type' => 'sysuser',
-        ]);
-
-        return redirect()->route('login');
-    }
+        // ... (Logic disabled)
+    } */
 
     public function registrarPaciente(Request $request)
     {
@@ -97,6 +82,8 @@ class AuthController extends Controller
                 return redirect()->route('dashboard');
             } elseif (Auth::user()->type === 'paciente') {
                 return redirect()->route('paciente.dashboard');
+            } elseif (Auth::user()->type === 'doctor') {
+                return redirect()->route('doctor.dashboard');
             }
 
             Auth::logout();
@@ -125,6 +112,8 @@ class AuthController extends Controller
                 return redirect()->route('paciente.dashboard');
             } elseif (Auth::user()->type === 'sysuser') {
                 return redirect()->route('dashboard');
+            } elseif (Auth::user()->type === 'doctor') {
+                return redirect()->route('doctor.dashboard');
             }
 
             Auth::logout();

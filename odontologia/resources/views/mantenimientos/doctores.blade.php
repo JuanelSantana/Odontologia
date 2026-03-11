@@ -28,6 +28,8 @@
                             </option>
                         @endforeach
                     </select>
+
+                    <input type="password" name="password" placeholder="{{ $doctorEdit ? 'Nueva contraseña (dejar en blanco para no cambiar)' : 'Contraseña para el usuario' }}" {{ $doctorEdit ? '' : 'required' }}>
                 </div>
 
                 <div class="form-actions">
