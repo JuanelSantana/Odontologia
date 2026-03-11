@@ -16,7 +16,8 @@ class Doctor extends Model
         'ced_doc',
         'tel_doc',
         'eml_doc',
-        'id_esp'
+        'id_esp',
+        'user_id'
     ];
 
 

@@ -116,8 +116,8 @@
                         <span class="title">Mis Citas</span>
                     </a>
                 </li>
-                <li class="list-item">
-                    <a href="#">
+                <li class="list-item" id="li-historial" onclick="mostrarSeccion('seccion-historial', this)">
+                    <a href="javascript:void(0)">
                         <span class="icon"><ion-icon name="medkit-outline"></ion-icon></span>
                         <span class="title">Mi Historial Clínico</span>
                     </a>
@@ -352,6 +352,52 @@
                         </table>
                     </div>
                 </div>
+            </section>
+
+            <!-- SECCION HISTORIAL CLINICO -->
+            <section id="seccion-historial" class="section-content">
+                <div style="margin-bottom: 30px;">
+                    <h2 style="color: #333; font-size: 1.6rem; font-weight: 700;">Mi Historial Clínico</h2>
+                    <p style="color: #666;">Consulta tus diagnósticos, tratamientos previos y condiciones médicas.</p>
+                </div>
+
+                @if($historialClinico)
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid #6B21A8;">
+                            <h3 style="color: #6B21A8; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                <ion-icon name="clipboard-outline"></ion-icon> Diagnóstico General
+                            </h3>
+                            <p style="color: #444; line-height: 1.6;">{{ $historialClinico->dig_hcl }}</p>
+                        </div>
+
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid #00b894;">
+                            <h3 style="color: #00b894; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                <ion-icon name="medkit-outline"></ion-icon> Tratamientos Previos
+                            </h3>
+                            <p style="color: #444; line-height: 1.6;">{{ $historialClinico->trt_prev_hcl ?: 'No se registran tratamientos previos.' }}</p>
+                        </div>
+
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid #ff7675;">
+                            <h3 style="color: #ff7675; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                <ion-icon name="alert-circle-outline"></ion-icon> Alergias Conocidas
+                            </h3>
+                            <p style="color: #444; line-height: 1.6;">{{ $historialClinico->alg_hcl ?: 'No se registran alergias.' }}</p>
+                        </div>
+
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid #0984e3;">
+                            <h3 style="color: #0984e3; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                <ion-icon name="flask-outline"></ion-icon> Medicamentos Actuales
+                            </h3>
+                            <p style="color: #444; line-height: 1.6;">{{ $historialClinico->mds_hcl ?: 'No se registran medicamentos.' }}</p>
+                        </div>
+                    </div>
+                @else
+                    <div style="background: white; padding: 50px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                        <ion-icon name="document-text-outline" style="font-size: 64px; color: #ccc; margin-bottom: 20px;"></ion-icon>
+                        <h3 style="color: #333;">Aún no tienes un historial clínico registrado</h3>
+                        <p style="color: #666; max-width: 500px; margin: 10px auto;">Tu historial será generado por el personal médico después de tu primera consulta.</p>
+                    </div>
+                @endif
             </section>
 
         </div>

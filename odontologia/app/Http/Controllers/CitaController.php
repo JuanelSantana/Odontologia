@@ -41,7 +41,10 @@ class CitaController extends Controller
         $doctores = Doctor::all();
         $servicios = Servicio::all();
 
-        return view('dashboard_paciente', compact('paciente', 'proximaCita', 'historialCitas', 'doctores', 'servicios'));
+        // Historial Clínico
+        $historialClinico = $paciente->historialClinico;
+
+        return view('dashboard_paciente', compact('paciente', 'proximaCita', 'historialCitas', 'doctores', 'servicios', 'historialClinico'));
     }
 
     public function create()

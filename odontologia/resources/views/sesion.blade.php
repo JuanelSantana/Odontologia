@@ -45,8 +45,8 @@
                     @enderror
                 </div>
                 <br>
+                <br>
                 <button type="submit">Iniciar</button>
-                <p>No tienes una cuenta? <a href="/inicio">Registrate</a></p>
             </form>
         </div>
     </div>

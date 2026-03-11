@@ -38,9 +38,30 @@
                     <ion-icon name="medical-outline"></ion-icon> Tratamientos
                 </a>
             </li>
+            <li class="{{ request()->routeIs('mantenimientos.usuarios.*') ? 'active' : '' }}">
+                <a href="{{ route('mantenimientos.usuarios.index') }}">
+                    <ion-icon name="person-circle-outline"></ion-icon> Usuarios
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="content">
+        @if(session('success'))
+            <div class="alert alert-success" style="padding: 15px; background: #d4edda; color: #155724; margin-bottom: 20px; border-radius: 4px; border: 1px solid #c3e6cb;">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if($errors->any())
+            <div class="alert alert-danger" style="padding: 15px; background: #f8d7da; color: #721c24; margin-bottom: 20px; border-radius: 4px; border: 1px solid #f5c6cb;">
+                <ul style="margin: 0;">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @yield('contenidomant')
     </div>
 @endsection
