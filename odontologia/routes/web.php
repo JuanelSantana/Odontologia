@@ -10,6 +10,11 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\SeguroController;
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\AdminCitaController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\TratamientoController;
 
 // Rutas accesibles para invitados
@@ -144,6 +149,16 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
     Route::delete('/mantenimientos/materiales/{id}', [MaterialController::class, 'destroy'])
         ->name('mantenimientos.materiales.destroy');
 
+    // Rutas de Inventario
+    Route::get('/mantenimientos/inventario', [InventarioController::class, 'index'])
+        ->name('mantenimientos.inventario.index');
+    Route::post('/mantenimientos/inventario', [InventarioController::class, 'store'])
+        ->name('mantenimientos.inventario.store');
+    Route::put('/mantenimientos/inventario/{id}', [InventarioController::class, 'update'])
+        ->name('mantenimientos.inventario.update');
+    Route::delete('/mantenimientos/inventario/{id}', [InventarioController::class, 'destroy'])
+        ->name('mantenimientos.inventario.destroy');
+
     // Rutas de Proveedores
     Route::get('/mantenimientos/proveedores', [ProveedorController::class, 'index'])
         ->name('mantenimientos.proveedores.index');
@@ -183,5 +198,44 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
         ->name('mantenimientos.usuarios.update');
     Route::delete('/mantenimientos/usuarios/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])
         ->name('mantenimientos.usuarios.destroy');
+
+    // =========================== PROCESOS ===========================
+    // Rutas de Historial Clínico
+    Route::get('/procesos/historial', [HistorialController::class, 'index'])
+        ->name('procesos.historial.index');
+    Route::post('/procesos/historial', [HistorialController::class, 'store'])
+        ->name('procesos.historial.store');
+    Route::put('/procesos/historial/{id}', [HistorialController::class, 'update'])
+        ->name('procesos.historial.update');
+    Route::delete('/procesos/historial/{id}', [HistorialController::class, 'destroy'])
+        ->name('procesos.historial.destroy');
+
+    // Rutas de Citas (Administración)
+    Route::get('/procesos/citas', [AdminCitaController::class, 'index'])
+        ->name('procesos.citas.index');
+    Route::post('/procesos/citas', [AdminCitaController::class, 'store'])
+        ->name('procesos.citas.store');
+    Route::put('/procesos/citas/{id}', [AdminCitaController::class, 'update'])
+        ->name('procesos.citas.update');
+    Route::delete('/procesos/citas/{id}', [AdminCitaController::class, 'destroy'])
+        ->name('procesos.citas.destroy');
+
+    // Rutas de Pagos
+    Route::get('/procesos/pagos', [PagoController::class, 'index'])
+        ->name('procesos.pagos.index');
+    Route::post('/procesos/pagos', [PagoController::class, 'store'])
+        ->name('procesos.pagos.store');
+    Route::put('/procesos/pagos/{id}', [PagoController::class, 'update'])
+        ->name('procesos.pagos.update');
+    Route::delete('/procesos/pagos/{id}', [PagoController::class, 'destroy'])
+        ->name('procesos.pagos.destroy');
+
+    // Rutas de Facturación
+    Route::get('/procesos/facturas', [FacturaController::class, 'index'])
+        ->name('procesos.facturas.index');
+    Route::post('/procesos/facturas', [FacturaController::class, 'store'])
+        ->name('procesos.facturas.store');
+    Route::delete('/procesos/facturas/{id}', [FacturaController::class, 'destroy'])
+        ->name('procesos.facturas.destroy');
 });
 

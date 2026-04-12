@@ -10,6 +10,14 @@ class Pago extends Model
     protected $primaryKey = 'id_pag';
     public $timestamps = false;
 
+    protected $fillable = [
+        'ced_pac',
+        'id_cit',
+        'id_mpa',
+        'mnt_pag',
+        'fec_pag'
+    ];
+
     public function paciente()
     {
         return $this->belongsTo(Paciente::class, 'ced_pac', 'ced_pac');

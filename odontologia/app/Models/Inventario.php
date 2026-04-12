@@ -10,6 +10,12 @@ class Inventario extends Model
     protected $primaryKey = 'id_inv';
     public $timestamps = false;
 
+    protected $fillable = [
+        'id_mat',
+        'id_prv',
+        'cnt_inv',
+    ];
+
     public function material()
     {
         return $this->belongsTo(Material::class, 'id_mat');

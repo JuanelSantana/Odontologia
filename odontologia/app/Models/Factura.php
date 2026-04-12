@@ -10,6 +10,14 @@ class Factura extends Model
     protected $primaryKey = 'id_fac';
     public $timestamps = false;
 
+    protected $fillable = [
+        'id_pag',
+        'num_fac',
+        'fec_emis_fac',
+        'imp_fac',
+        'ttl_fac'
+    ];
+
     public function pago()
     {
         return $this->belongsTo(Pago::class, 'id_pag');

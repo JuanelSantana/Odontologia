@@ -23,6 +23,11 @@
                     <ion-icon name="cube-outline"></ion-icon> Materiales
                 </a>
             </li>
+            <li class="{{ request()->routeIs('mantenimientos.inventario.*') ? 'active' : '' }}">
+                <a href="{{ route('mantenimientos.inventario.index') }}">
+                    <ion-icon name="list-outline"></ion-icon> Inventario
+                </a>
+            </li>
             <li class="{{ request()->routeIs('mantenimientos.proveedores.*') ? 'active' : '' }}">
                 <a href="{{ route('mantenimientos.proveedores.index') }}">
                     <ion-icon name="business-outline"></ion-icon> Proveedores

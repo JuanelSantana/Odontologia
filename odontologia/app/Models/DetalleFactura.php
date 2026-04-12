@@ -10,6 +10,14 @@ class DetalleFactura extends Model
     protected $primaryKey = 'id_det';
     public $timestamps = false;
 
+    protected $fillable = [
+        'id_fac',
+        'id_srv',
+        'cant',
+        'precio',
+        'subtotal'
+    ];
+
     public function factura()
     {
         return $this->belongsTo(Factura::class, 'id_fac');

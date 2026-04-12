@@ -15,7 +15,7 @@
 
     <aside class="sidebar">
         <div class="perfil">
-            <div class="foto"></div>
+            <div class="foto"><ion-icon name="person-outline"></ion-icon></div>
             <div class="nombre">
                 <p> {{ Auth::user()->name }}</p>
                 <span>{{ Auth::user()->email }}</span>
@@ -24,7 +24,8 @@
 
         <nav class="menu">
             <ul>
-                <li class="list-item {{ request()->routeIs('dashboard') || request()->routeIs('doctor.dashboard') ? 'active' : '' }}">
+                <li
+                    class="list-item {{ request()->routeIs('dashboard') || request()->routeIs('doctor.dashboard') ? 'active' : '' }}">
                     <a href="{{ auth()->user()->type === 'doctor' ? route('doctor.dashboard') : route('dashboard') }}">
                         <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
@@ -32,19 +33,22 @@
                 </li>
                 @if(auth()->user()->type === 'doctor')
                     <!-- DOCTOR SIDEBAR -->
-                    <li class="list-item {{ request()->routeIs('doctor.citas.*') || request()->routeIs('doctor.citas') ? 'active' : '' }}">
+                    <li
+                        class="list-item {{ request()->routeIs('doctor.citas.*') || request()->routeIs('doctor.citas') ? 'active' : '' }}">
                         <a href="{{ route('doctor.citas.index') }}">
                             <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
                             <span class="title">Citas</span>
                         </a>
                     </li>
-                    <li class="list-item {{ request()->routeIs('doctor.consultas.*') || request()->routeIs('doctor.consultas') ? 'active' : '' }}">
+                    <li
+                        class="list-item {{ request()->routeIs('doctor.consultas.*') || request()->routeIs('doctor.consultas') ? 'active' : '' }}">
                         <a href="{{ route('doctor.consultas.index') }}">
                             <span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
                             <span class="title">Consultas</span>
                         </a>
                     </li>
-                    <li class="list-item {{ request()->routeIs('doctor.tratamientos.*') || request()->routeIs('doctor.tratamientos') ? 'active' : '' }}">
+                    <li
+                        class="list-item {{ request()->routeIs('doctor.tratamientos.*') || request()->routeIs('doctor.tratamientos') ? 'active' : '' }}">
                         <a href="{{ route('doctor.tratamientos.index') }}">
                             <span class="icon"><ion-icon name="medical-outline"></ion-icon></span>
                             <span class="title">Tratamientos</span>
@@ -59,16 +63,10 @@
                             <span class="title">Mantenimientos</span>
                         </a>
                     </li>
-                    <li class="list-item">
-                        <a href="#">
+                    <li class="list-item {{ request()->routeIs('procesos.*') ? 'active' : '' }}">
+                        <a href="{{ route('procesos.historial.index') }}">
                             <span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
-                            <span class="title">Consultas</span>
-                        </a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#">
-                            <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
-                            <span class="title">Reportes</span>
+                            <span class="title">Procesos</span>
                         </a>
                     </li>
                 @endif
