@@ -87,6 +87,12 @@ class FacturaController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $factura = Factura::with(['pago.paciente', 'detalles.servicio'])->findOrFail($id);
+        return view('procesos.factura_print', compact('factura'));
+    }
+
     public function destroy($id)
     {
         $factura = Factura::findOrFail($id);

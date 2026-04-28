@@ -235,6 +235,8 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
         ->name('procesos.facturas.index');
     Route::post('/procesos/facturas', [FacturaController::class, 'store'])
         ->name('procesos.facturas.store');
+    Route::get('/procesos/facturas/{id}', [FacturaController::class, 'show'])
+        ->name('procesos.facturas.show');
     Route::delete('/procesos/facturas/{id}', [FacturaController::class, 'destroy'])
         ->name('procesos.facturas.destroy');
 });
