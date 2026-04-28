@@ -290,9 +290,9 @@
                 <div class="contacto-item telefonos">
                     <img src="https://img.icons8.com/ios/40/6B21A8/phone.png" alt="Telefono">
                     <div class="contacto-texto">
-                        <h3>Telefonos</h3>
-                        <p>973 7608XXX</p>
-                        <p>973 7825XXX</p>
+                        <h3>Teléfonos</h3>
+                        <p>201 760-986</p>
+                        <p>201 760-986</p>
                     </div>
                 </div>
 
