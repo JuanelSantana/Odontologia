@@ -169,18 +169,18 @@
                 row.className = 'servicio-row';
                 row.style = 'display: flex; gap: 10px; margin-bottom: 10px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 5px;';
                 row.innerHTML = `
-                        <div style="flex: 2;">
-                            <input type="hidden" name="id_srv[]" value="${srv.id}">
-                            <strong>${srv.nom}</strong>
-                        </div>
-                        <div style="flex: 1;">
-                            <input type="number" name="cant[]" value="1" min="1" required style="width: 60px;"> Cant.
-                        </div>
-                        <div style="flex: 1; text-align: right;">
-                            $${parseFloat(srv.precio).toLocaleString()}
-                        </div>
-                        <button type="button" class="btn-icon delete" onclick="this.parentElement.remove()" style="flex: 0.2;"><ion-icon name="close-outline"></ion-icon></button>
-                    `;
+                            <div style="flex: 2;">
+                                <input type="hidden" name="id_srv[]" value="${srv.id}">
+                                <strong>${srv.nom}</strong>
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="number" name="cant[]" value="1" min="1" required style="width: 60px;"> Cant.
+                            </div>
+                            <div style="flex: 1; text-align: right;">
+                                $${parseFloat(srv.precio).toLocaleString()}
+                            </div>
+                            <button type="button" class="btn-icon delete" onclick="this.parentElement.remove()" style="flex: 0.2;"><ion-icon name="close-outline"></ion-icon></button>
+                        `;
                 container.appendChild(row);
             });
         }
@@ -194,15 +194,15 @@
             row.className = 'servicio-row';
             row.style = 'display: flex; gap: 10px; margin-bottom: 10px; align-items: center;';
             row.innerHTML = `
-                    <select name="id_srv[]" style="flex: 2;" required>
-                        <option value="">Seleccione Servicio...</option>
-                        @foreach($servicios as $srv)
-                            <option value="{{ $srv->id_srv }}">{{ $srv->nom_srv }} (${{ number_format($srv->cst_srv, 2) }})</option>
-                        @endforeach
-                    </select>
-                    <input type="number" name="cant[]" placeholder="Cant" style="flex: 1; width: 60px;" value="1" min="1" required>
-                    <button type="button" class="btn-icon delete" onclick="this.parentElement.remove()" style="flex: 0.2;"><ion-icon name="close-outline"></ion-icon></button>
-                `;
+                        <select name="id_srv[]" style="flex: 2;" required>
+                            <option value="">Seleccione Servicio...</option>
+                            @foreach($servicios as $srv)
+                                <option value="{{ $srv->id_srv }}">{{ $srv->nom_srv }} (${{ number_format($srv->cst_srv, 2) }})</option>
+                            @endforeach
+                        </select>
+                        <input type="number" name="cant[]" placeholder="Cant" style="flex: 1; width: 60px;" value="1" min="1" required>
+                        <button type="button" class="btn-icon delete" onclick="this.parentElement.remove()" style="flex: 0.2;"><ion-icon name="close-outline"></ion-icon></button>
+                    `;
             container.appendChild(row);
         }
     </script>
