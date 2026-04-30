@@ -271,8 +271,8 @@
                     <img src="https://img.icons8.com/ios-filled/30/ffffff/marker.png" alt="Ubicacion">
                     <div class="contacto-texto">
                         <h3>Dirección</h3>
-                        <p>Av. Color 1560</p>
-                        <p>Newark, New Jersey</p>
+                        <p>1401 A Overing Street</p>
+                        <p>Bronx New York, 10461, United States</p>
                     </div>
                 </div>
 
@@ -291,8 +291,8 @@
                     <img src="https://img.icons8.com/ios/40/6B21A8/phone.png" alt="Telefono">
                     <div class="contacto-texto">
                         <h3>Teléfonos</h3>
-                        <p>201 760-986</p>
-                        <p>201 760-986</p>
+                        <p>718-239-8241</p>
+                        <p>718-239-8241</p>
                     </div>
                 </div>
 
