@@ -56,7 +56,11 @@ class CitaController extends Controller
     {
         $request->validate([
             'id_doc' => 'required|exists:Doctores,id_doc',
-            'fec_cit' => 'required|date|after:now',
+            'fec_cit' => ['required', 'date', function ($attribute, $value, $fail) {
+                if (strtotime($value) < time() - 300) {
+                    $fail('La fecha de la cita no puede ser en el pasado.');
+                }
+            }],
             'id_srv' => 'required|array',
             'id_srv.*' => 'exists:Servicios,id_srv',
             'mtv_cit' => 'nullable|string|max:255',
