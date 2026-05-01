@@ -69,7 +69,7 @@ class FacturaController extends Controller
             $factura = Factura::create([
                 'id_pag' => $request->id_pag,
                 'num_fac' => $request->num_fac,
-                'fec_emis_fac' => $request->fec_emis_fac,
+                'fec_emis_fac' => date('Y-m-d H:i:s', strtotime($request->fec_emis_fac)),
                 'imp_fac' => $total * 0.18, // ITBIS 18%
                 'ttl_fac' => $total + ($total * 0.18),
             ]);

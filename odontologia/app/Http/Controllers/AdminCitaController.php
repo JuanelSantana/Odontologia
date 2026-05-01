@@ -41,7 +41,9 @@ class AdminCitaController extends Controller
 
         try {
             DB::beginTransaction();
-            $cita = Cita::create($request->all());
+            $data = $request->all();
+            $data['fec_cit'] = date('Y-m-d H:i:s', strtotime($request->fec_cit));
+            $cita = Cita::create($data);
             $cita->servicios()->attach($request->id_srv);
             DB::commit();
             return redirect()->route('procesos.citas.index')->with('success', 'Cita creada correctamente.');
@@ -65,7 +67,9 @@ class AdminCitaController extends Controller
 
         try {
             DB::beginTransaction();
-            $cita->update($request->all());
+            $data = $request->all();
+            $data['fec_cit'] = date('Y-m-d H:i:s', strtotime($request->fec_cit));
+            $cita->update($data);
             $cita->servicios()->sync($request->id_srv);
             DB::commit();
             return redirect()->route('procesos.citas.index')->with('success', 'Cita actualizada correctamente.');

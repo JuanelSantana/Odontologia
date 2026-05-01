@@ -85,6 +85,7 @@ Route::middleware(['auth', 'doctor'])->group(function () {
 Route::middleware(['auth', 'paciente'])->group(function () {
     Route::get('/dashboard-paciente', [CitaController::class, 'dashboard'])->name('paciente.dashboard');
     Route::post('/guardar-cita', [CitaController::class, 'store'])->name('citas.guardar');
+    Route::get('/citas/disponibilidad', [CitaController::class, 'getAvailability'])->name('citas.disponibilidad');
 });
 
 

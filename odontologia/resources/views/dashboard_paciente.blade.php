@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel del Paciente</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <style>
         .section-content {
@@ -79,6 +82,141 @@
         .alert-danger {
             background: #fde8e8;
             color: #9b1c1c;
+        }
+
+        /* Estilos para el nuevo selector de citas */
+        .appointment-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .appointment-selector {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calendar-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1.5px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-slots-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1.5px solid #e2e8f0;
+            max-height: 450px;
+            overflow-y: auto;
+        }
+
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .time-slot {
+            padding: 12px;
+            background: white;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .time-slot:hover:not(.disabled) {
+            border-color: #6B21A8;
+            background: #f3e8ff;
+            color: #6B21A8;
+        }
+
+        .time-slot.selected {
+            background: #6B21A8;
+            color: white;
+            border-color: #6B21A8;
+        }
+
+        .time-slot.disabled {
+            background: #f1f5f9;
+            color: #cbd5e1;
+            cursor: not-allowed;
+            border-color: #e2e8f0;
+        }
+
+        .flatpickr-calendar {
+            box-shadow: none !important;
+            border: none !important;
+            background: transparent !important;
+            width: 100% !important;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .flatpickr-months .flatpickr-month {
+            height: 50px !important;
+        }
+
+        .flatpickr-current-month {
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+        }
+
+        .flatpickr-weekdays {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: space-around !important;
+        }
+
+        .flatpickr-weekdaycontainer {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: space-around !important;
+        }
+
+        .flatpickr-weekday {
+            flex: 1 !important;
+            text-align: center !important;
+            color: #94a3b8 !important;
+            font-weight: 600 !important;
+            font-size: 12px !important;
+            text-transform: uppercase !important;
+        }
+
+        .flatpickr-day {
+            border-radius: 10px !important;
+            margin: 2px !important;
+            height: 38px !important;
+            line-height: 38px !important;
+            border: 1px solid transparent !important;
+            transition: all 0.2s !important;
+        }
+
+        .flatpickr-day:hover {
+            background: #f1f5f9 !important;
+            color: #6B21A8 !important;
+        }
+
+        .flatpickr-day.selected {
+            background: #6B21A8 !important;
+            border-color: #6B21A8 !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(107, 33, 168, 0.3) !important;
+        }
+
+        .flatpickr-day.today {
+            border-color: #6B21A8 !important;
+            color: #6B21A8 !important;
         }
     </style>
 </head>
@@ -261,7 +399,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Selecciona un Doctor</label>
-                        <select name="id_doc" class="form-control" required>
+                        <select name="id_doc" id="select-doctor" class="form-control" required>
                             <option value="">-- Elige un doctor --</option>
                             @foreach($doctores as $doc)
                                 <option value="{{ $doc->id_doc }}">Dr. {{ $doc->nom_doc }} {{ $doc->ape_doc }}
@@ -271,9 +409,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Fecha y Hora (Horario: 8:00 AM - 5:00 PM)</label>
-                        <input type="datetime-local" name="fec_cit" class="form-control" required
-                            min="{{ date('Y-m-d\TH:i') }}">
+                        <label>Selecciona Fecha y Hora</label>
+                        <div class="appointment-selector">
+                            <div class="calendar-container">
+                                <div id="calendar-inline"></div>
+                                <input type="hidden" name="fecha_seleccionada" id="fecha_seleccionada">
+                            </div>
+                            <div class="time-slots-container">
+                                <div id="time-slots-message" style="text-align: center; color: #888; padding: 20px;">
+                                    Selecciona un doctor y una fecha para ver horarios disponibles
+                                </div>
+                                <div class="time-slots-grid" id="time-slots-grid" style="display: none;">
+                                    <!-- Slots will be injected here -->
+                                </div>
+                                <input type="hidden" name="fec_cit" id="fec_cit" required>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -290,8 +441,14 @@
 
                     <div class="form-group">
                         <label>Motivo de la Cita (Opcional)</label>
-                        <textarea name="mtv_cit" class="form-control" rows="3"
+                        <textarea name="mtv_cit" class="form-control" rows="2"
                             placeholder="Ej: Dolor en una muela..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Comentario Adicional (Opcional)</label>
+                        <textarea name="cmt_cit" class="form-control" rows="2"
+                            placeholder="Algún detalle adicional que quieras mencionar..."></textarea>
                     </div>
 
                     <div style="margin-top: 30px;">
@@ -317,7 +474,7 @@
                                     <th>Hora</th>
                                     <th>Doctor</th>
                                     <th>Servicios</th>
-                                    <th>Motivo</th>
+                                    <th>Motivo/Comentario</th>
                                     <th>Estado</th>
                                 </tr>
                             </thead>
@@ -333,7 +490,12 @@
                                                     style="background: #edf2f7; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-right: 4px;">{{ $srv->nom_srv }}</span>
                                             @endforeach
                                         </td>
-                                        <td>{{ $cita->mtv_cit ?: 'N/A' }}</td>
+                                        <td>
+                                            <div style="font-size: 12px; color: #333;"><strong>M:</strong> {{ $cita->mtv_cit ?: 'N/A' }}</div>
+                                            @if($cita->cmt_cit)
+                                                <div style="font-size: 11px; color: #666; font-style: italic;"><strong>C:</strong> {{ $cita->cmt_cit }}</div>
+                                            @endif
+                                        </td>
                                         <td>
                                             <span
                                                 style="padding: 4px 10px; border-radius: 20px; font-size: 12px; background: 
@@ -423,6 +585,107 @@
         @if($errors->any() && !session('success'))
             mostrarSeccion('seccion-agendar', document.getElementById('li-agendar'));
         @endif
+
+        // Configuración de Flatpickr e Interacción de Citas
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectDoctor = document.getElementById('select-doctor');
+            const calendarEl = document.getElementById('calendar-inline');
+            const timeSlotsGrid = document.getElementById('time-slots-grid');
+            const timeSlotsMessage = document.getElementById('time-slots-message');
+            const inputFecha = document.getElementById('fecha_seleccionada');
+            const inputFecCit = document.getElementById('fec_cit');
+
+            let fp = flatpickr(calendarEl, {
+                inline: true,
+                locale: "es",
+                minDate: "today",
+                dateFormat: "Y-m-d",
+                disable: [
+                    function(date) {
+                        // Deshabilitar fines de semana si es necesario
+                        return (date.getDay() === 0 || date.getDay() === 6);
+                    }
+                ],
+                onChange: function(selectedDates, dateStr) {
+                    inputFecha.value = dateStr;
+                    cargarDisponibilidad();
+                }
+            });
+
+            selectDoctor.addEventListener('change', cargarDisponibilidad);
+
+            async function cargarDisponibilidad() {
+                const doctorId = selectDoctor.value;
+                const fecha = inputFecha.value;
+
+                if (!doctorId || !fecha) {
+                    timeSlotsGrid.style.display = 'none';
+                    timeSlotsMessage.style.display = 'block';
+                    timeSlotsMessage.textContent = 'Selecciona un doctor y una fecha para ver horarios disponibles';
+                    return;
+                }
+
+                timeSlotsMessage.textContent = 'Cargando horarios...';
+                timeSlotsGrid.style.display = 'none';
+                timeSlotsMessage.style.display = 'block';
+
+                try {
+                    const response = await fetch(`{{ route('citas.disponibilidad') }}?id_doc=${doctorId}&fecha=${fecha}`);
+                    const data = await response.json();
+                    
+                    renderTimeSlots(data.booked_slots);
+                } catch (error) {
+                    console.error('Error:', error);
+                    timeSlotsMessage.textContent = 'Error al cargar disponibilidad';
+                }
+            }
+
+            function renderTimeSlots(bookedSlots) {
+                const slots = [
+                    '08:00', '09:00', '10:00', '11:00', '12:00', 
+                    '13:00', '14:00', '15:00', '16:00'
+                ];
+
+                timeSlotsGrid.innerHTML = '';
+                
+                slots.forEach(slot => {
+                    const div = document.createElement('div');
+                    div.className = 'time-slot';
+                    
+                    // Convertir slot a formato 12h para mostrar
+                    const [hour, min] = slot.split(':');
+                    const hourInt = parseInt(hour);
+                    const ampm = hourInt >= 12 ? 'PM' : 'AM';
+                    const displayHour = hourInt > 12 ? hourInt - 12 : (hourInt === 0 ? 12 : hourInt);
+                    
+                    const endHourInt = hourInt + 1;
+                    const endAmpm = endHourInt >= 12 ? 'PM' : 'AM';
+                    const displayEndHour = endHourInt > 12 ? endHourInt - 12 : (endHourInt === 0 ? 12 : endHourInt);
+                    
+                    const displayTime = `${displayHour}:${min} ${ampm} - ${displayEndHour}:${min} ${endAmpm}`;
+                    
+                    div.textContent = displayTime;
+
+                    const slotTime = new Date(`${inputFecha.value}T${slot}:00`);
+                    const now = new Date();
+
+                    if (bookedSlots.includes(slot) || slotTime < now) {
+                        div.classList.add('disabled');
+                    } else {
+                        div.addEventListener('click', () => {
+                            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                            div.classList.add('selected');
+                            inputFecCit.value = `${inputFecha.value} ${slot}:00`;
+                        });
+                    }
+                    
+                    timeSlotsGrid.appendChild(div);
+                });
+
+                timeSlotsMessage.style.display = 'none';
+                timeSlotsGrid.style.display = 'grid';
+            }
+        });
     </script>
 </body>
 
