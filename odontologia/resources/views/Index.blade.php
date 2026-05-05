@@ -101,7 +101,7 @@
         <h2 class="promocion-titulo" id="nosotros">Acerca de nosotros...</h2>
         <p class="promocion-descripcion">
             En Dr. Cepin Clinic, nos dedicamos a ofrecer servicios odontológicos de alta calidad
-            en New Jersey. Nuestro compromiso es brindar una experiencia cómoda y segura, utilizando
+            en New York. Nuestro compromiso es brindar una experiencia cómoda y segura, utilizando
             tecnología de vanguardia para garantizar que cada paciente logre la sonrisa saludable y
             radiante que siempre ha deseado.
         </p>
