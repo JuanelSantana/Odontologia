@@ -65,7 +65,7 @@
                 <h1 class="titulo">Dr. Cepin Clinic</h1>
                 <p class="descripcion">
                     Bienvenidos a Dr. Cepin Clinic. Brindamos atención odontológica de primer nivel con un
-                    toque humano y profesional en New Jersey. Transforma tu sonrisa con la tecnología más
+                    toque humano y profesional en New York. Transforma tu sonrisa con la tecnología más
                     avanzada y la experiencia que mereces. Cuidamos las sonrisas de toda tu familia, brindando salud
                     dental integral para niños, jóvenes y adultos.
                 </p>
