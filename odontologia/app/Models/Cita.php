@@ -16,6 +16,7 @@ class Cita extends Model
         'id_eci',
         'fec_cit',
         'mtv_cit',
+        'cmt_cit',
         'id_usr',
     ];
 

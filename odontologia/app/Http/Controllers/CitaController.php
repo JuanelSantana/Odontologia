@@ -64,6 +64,7 @@ class CitaController extends Controller
             'id_srv' => 'required|array',
             'id_srv.*' => 'exists:Servicios,id_srv',
             'mtv_cit' => 'nullable|string|max:255',
+            'cmt_cit' => 'nullable|string|max:255',
         ]);
 
         $timestamp = strtotime($request->fec_cit);
@@ -82,6 +83,7 @@ class CitaController extends Controller
                 'id_eci' => 1, // Pendiente
                 'fec_cit' => date('Y-m-d H:i:s', $timestamp),
                 'mtv_cit' => $request->mtv_cit,
+                'cmt_cit' => $request->cmt_cit,
                 'id_usr' => Auth::id(),
             ]);
 
@@ -127,5 +129,25 @@ class CitaController extends Controller
         $cita->delete();
 
         return redirect()->route('citas.index')->with('success', 'Cita eliminada correctamente.');
+    }
+
+    public function getAvailability(Request $request)
+    {
+        $request->validate([
+            'id_doc' => 'required|exists:Doctores,id_doc',
+            'fecha' => 'required|date_format:Y-m-d'
+        ]);
+
+        $bookedSlots = Cita::where('id_doc', $request->id_doc)
+            ->whereDate('fec_cit', $request->fecha)
+            ->whereIn('id_eci', [1, 2, 6]) // Pendiente, Confirmada, En proceso
+            ->pluck('fec_cit')
+            ->map(function($date) {
+                return \Carbon\Carbon::parse($date)->format('H:i');
+            });
+
+        return response()->json([
+            'booked_slots' => $bookedSlots
+        ]);
     }
 }
