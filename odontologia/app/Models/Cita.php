@@ -18,6 +18,14 @@ class Cita extends Model
         'mtv_cit',
         'cmt_cit',
         'id_usr',
+        'recordatorio_24h_enviado',
+        'recordatorio_1h_enviado',
+    ];
+
+    protected $casts = [
+        'recordatorio_24h_enviado' => 'boolean',
+        'recordatorio_1h_enviado'  => 'boolean',
+        'fec_cit'                  => 'datetime',
     ];
 
     public function paciente()

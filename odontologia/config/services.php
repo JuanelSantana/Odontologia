@@ -35,4 +35,24 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Groq API (LLM - Recordatorios y Chatbot)
+    |--------------------------------------------------------------------------
+    */
+    'groq' => [
+        'key' => env('GROQ_API_KEY', ''),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Evolution API (WhatsApp Messaging)
+    |--------------------------------------------------------------------------
+    */
+    'evolution_api' => [
+        'url'      => env('EVOLUTION_API_URL', 'http://localhost:8080'),
+        'key'      => env('EVOLUTION_API_KEY', ''),
+        'instance' => env('EVOLUTION_API_INSTANCE', 'clinica_cepin'),
+    ],
+
 ];

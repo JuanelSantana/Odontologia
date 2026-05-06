@@ -240,3 +240,16 @@ Route::middleware(['auth', 'sysuser'])->group(function () {
         ->name('procesos.facturas.destroy');
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Webhook de WhatsApp (Evolution API -> Sistema Reactivo)
+|--------------------------------------------------------------------------
+| Esta ruta NO requiere autenticacion (la invoca Evolution API externamente).
+| IMPORTANTE: Agrega 'api/webhook/whatsapp' al array $except de:
+|   app/Http/Middleware/VerifyCsrfToken.php
+*/
+use App\Http\Controllers\WhatsappWebhookController;
+
+Route::post('/api/webhook/whatsapp', [WhatsappWebhookController::class, 'handle'])
+    ->name('webhook.whatsapp');
