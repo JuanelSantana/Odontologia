@@ -16,6 +16,7 @@
       <h2>Bienvenido</h2>
       <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
       <a href="registrop" class="btn-outline">Registrarse</a>
+      <a href="{{ route('index') }}" class="btn-outline" style="margin-top: 15px;">Volver al Inicio</a>
     </div>
 
     <!-- Formulario Login -->

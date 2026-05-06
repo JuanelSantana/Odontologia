@@ -15,7 +15,8 @@
     <div class="panel">
       <h2>Ya tienes cuenta?</h2>
       <p>Si ya tienes una cuenta, inicia sesión para acceder a tus citas y tratamientos</p>
-      <a href="iniciop" class="btn-outline">Iniciar Sesion</a>
+      <a href="iniciop" class="btn-outline">Iniciar Sesión</a>
+      <a href="{{ route('index') }}" class="btn-outline" style="margin-top: 15px;">Volver al Inicio</a>
     </div>
 
     <div class="form-section">
