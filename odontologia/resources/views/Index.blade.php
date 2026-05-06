@@ -257,7 +257,7 @@
     </section>
     <!-- ========== TITULO PROMOCION ========== -->
     <section class="seccion-titulo">
-        <h2 class="titulo-promocion" id="contacto">Contáctanos!</h2>
+        <h2 class="titulo-promocion" id="contacto">¡Contáctanos!</h2>
 
         <!-- ========== BARRA DE CONTACTO ========== -->
         <section class="barra-contacto">
