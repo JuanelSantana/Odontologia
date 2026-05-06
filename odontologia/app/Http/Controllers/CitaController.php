@@ -84,7 +84,7 @@ class CitaController extends Controller
                 'fec_cit' => date('Y-m-d H:i:s', $timestamp),
                 'mtv_cit' => $request->mtv_cit,
                 'cmt_cit' => $request->cmt_cit,
-                'id_usr' => Auth::id(),
+                'id_usr' => null,
             ]);
 
             // Vincular servicios
